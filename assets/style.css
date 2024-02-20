@@ -68,6 +68,7 @@ input[type=checkbox] {
 
 #coordonnees input{
     margin-bottom: 15px;
+    width:50%;
 }
 
 #coordonnees label{

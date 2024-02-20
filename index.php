@@ -56,12 +56,12 @@
 
 
         <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
-        <!-- <input type="checkbox" name="passSelection" id="pass1jourReduit">
+        <input type="radio" name="passSelection" id="pass1jourReduit">
         <label for="pass1jourReduit">Pass 1 jour : 25€</label>
-        <input type="checkbox" name="passSelection" id="pass2joursReduit">
+        <input type="radio" name="passSelection" id="pass2joursReduit">
         <label for="pass2joursReduit">Pass 2 jours : 50€</label>
-        <input type="checkbox" name="passSelection" id="pass3joursReduit">
-        <label for="pass3joursReduit">Pass 3 jours : 65€</label> -->
+        <input type="radio" name="passSelection" id="pass3joursReduit">
+        <label for="pass3joursReduit">Pass 3 jours : 65€</label>
 
         <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 

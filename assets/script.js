@@ -1,6 +1,17 @@
 // début code Salome
 // récupération des 3 blocs du formulaire
-let blocReservation = document.querySelector('#reservation');
+let blocReservation = document.querySelector("#reservation");
+
+let blocOptions = document.querySelector("#options");
+blocOptions.classList.add("hidden");
+
+let blocCoordonnees = document.querySelector("#coordonnees");
+blocCoordonnees.classList.add("hidden");
+
+function suivant(blocACacher, blocAAfficher) {
+  blocACacher.classList.add("hidden");
+  blocAAfficher.classList.remove("hidden");
+}
 
 // fin code Salome
 
@@ -14,53 +25,29 @@ let displayPass1Jour = document.querySelector("#pass1jourDate");
 let displayPass2Jour = document.querySelector("#pass2joursDate");
 let displayTarifReduit = document.querySelector("#tarifreduit");
 
-
-
- tarifreduit.addEventListener ("click", function(){
-    console.log("ça marche");
-    displayPass1Jour.classList.add("tarifHidden");
-    displayPass2Jour.classList.add("tarifHidden");
-    displayTarifReduit.classList.remove("tarifHidden");
-    
-    
-})
- pass1Jour.addEventListener("click", function () {
-    console.log("ça marche");
-    displayTarifReduit.classList.add("tarifHidden");
-    displayPass2Jour.classList.add("tarifHidden");
-    displayPass1Jour.classList.remove("tarifHidden");
-})
+tarifreduit.addEventListener("click", function () {
+  console.log("ça marche");
+  displayPass1Jour.classList.add("tarifHidden");
+  displayPass2Jour.classList.add("tarifHidden");
+  displayTarifReduit.classList.remove("tarifHidden");
+});
+pass1Jour.addEventListener("click", function () {
+  console.log("ça marche");
+  displayTarifReduit.classList.add("tarifHidden");
+  displayPass2Jour.classList.add("tarifHidden");
+  displayPass1Jour.classList.remove("tarifHidden");
+});
 pass2Jour.addEventListener("click", function () {
-    console.log("ça marche");
-    displayTarifReduit.classList.add("tarifHidden");
-    displayPass1Jour.classList.add("tarifHidden");
-    displayPass2Jour.classList.remove("tarifHidden");
-
-})
+  console.log("ça marche");
+  displayTarifReduit.classList.add("tarifHidden");
+  displayPass1Jour.classList.add("tarifHidden");
+  displayPass2Jour.classList.remove("tarifHidden");
+});
 pass3Jour.addEventListener("click", function () {
-    console.log("ça marche");
-})
-
-
-
-
+  console.log("ça marche");
+});
 
 // fin code Aubin
-
-let blocOptions = document.querySelector('#options');
-blocOptions.classList.add("hidden");
-
-
-let blocCoordonnees = document.querySelector('#coordonnees');
-blocCoordonnees.classList.add("hidden");
-
-
-function suivant(blocACacher, blocAAfficher) {
-    blocACacher.classList.add("hidden");
-    blocAAfficher.classList.remove("hidden");
-}
-
-// fin code Salome
 
 // début code Elodie
 
@@ -172,4 +159,3 @@ function decocher(boutoncoche, boutonadechoche) {
 }
 
 // fin code Elodie
-

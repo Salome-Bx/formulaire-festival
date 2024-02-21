@@ -3,6 +3,7 @@
 
 <head>
 
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulaire de réservation Music Vercos Festival</title>
@@ -21,6 +22,7 @@
         <h1>Vercors Musique Festival</h1>
     </header>
     <!------------------- BODY ------------------->
+
            
     <form action="./src/traitement.php" id="inscription" method="POST">
         <div id="reservation" class="blocFormulaire">
@@ -37,7 +39,7 @@
             <label for="pass1jour">Pass 1 jour : 40€</label>
 
             <!-- Si case cochée, afficher le choix du jour -->
-            <section id="pass1jourDate">
+            <section id="pass1jourDate"  class="tarifHidden">
                 <input type="checkbox" name="passSelection" id="choixJour1">
                 <label for="choixJour1">Pass pour la journée du 01/07</label>
                 <input type="checkbox" name="passSelection" id="choixJour2">
@@ -50,7 +52,7 @@
             <label for="pass2jours">Pass 2 jours : 70€</label>
           
             <!-- Si case cochée, afficher le choix des jours -->
-            <section id="pass2joursDate">
+            <section id="pass2joursDate"  class="tarifHidden">
                 <input type="checkbox" name="passSelection" id="choixJour12">
                 <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
                 <input type="checkbox" name="passSelection" id="choixJour23">
@@ -62,6 +64,7 @@
 
 
             <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
+
             <input type="checkbox" name="passSelection" id="pass1jourreduit">
             <label for="pass1jourreduit">Pass 1 jour : 25€</label>
             <input type="checkbox" name="passSelection" id="pass2joursreduit">
@@ -122,6 +125,7 @@
                 <input type="checkbox" name="enfantsNon"><label for="enfantsNon">Non</label>
             </div>
 
+
             <!-- Si oui, afficher : -->
             <section>
                 <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
@@ -131,6 +135,7 @@
             </section>
 
             <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
+
             <div class="divluge">
                 <label for="NombreLugesEte">Nombre de descentes en luge d'été (5€/descentes) :</label>
                 <input type="number" name="NombreLugesEte" id="NombreLugesEte">
@@ -163,3 +168,4 @@
 <script src="./assets/script.js"></script>
 
 </html>
+

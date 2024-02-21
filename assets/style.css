@@ -86,6 +86,9 @@ input[type="checkbox"] {
 }
 
 
+.tarifHidden {
+    display: none !important; 
+
 .hidden {
     display: none !important;
     

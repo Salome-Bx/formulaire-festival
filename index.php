@@ -64,13 +64,14 @@
 
 
             <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
-
+            <div id="tarifreduit" class="tarifHidden">
             <input type="checkbox" name="passSelection" id="pass1jourreduit">
             <label for="pass1jourreduit">Pass 1 jour : 25€</label>
             <input type="checkbox" name="passSelection" id="pass2joursreduit">
             <label for="pass2joursreduit">Pass 2 jours : 50€</label>
             <input type="checkbox" name="passSelection" id="pass3joursreduit">
             <label for="pass3joursreduit">Pass 3 jours : 65€</label>
+            </div>
           
 
             <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->

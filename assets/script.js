@@ -6,17 +6,17 @@ let blocReservation = document.querySelector('#reservation');
 
 // code Aubin
 
-let tarifReduit = document.querySelector("#tarifReduitRadio");
+let tarifreduit = document.querySelector("#tarifreduitRadio");
 let pass1Jour = document.querySelector("#pass1jour");
 let pass2Jour = document.querySelector("#pass2jours");
 let pass3Jour = document.querySelector("#pass3jours");
 let displayPass1Jour = document.querySelector("#pass1jourDate");
 let displayPass2Jour = document.querySelector("#pass2joursDate");
-let displayTarifReduit = document.querySelector("#tarifReduit");
+let displayTarifReduit = document.querySelector("#tarifreduit");
 
 
 
- tarifReduit.addEventListener ("click", function(){
+ tarifreduit.addEventListener ("click", function(){
     console.log("ça marche");
     displayPass1Jour.classList.add("tarifHidden");
     displayPass2Jour.classList.add("tarifHidden");

@@ -31,7 +31,7 @@
             <h3>Nombre de réservation(s) :</h3>
             <input type="number" name="nombrePlaces" id="NombrePlaces" required>
             <h3>Réservation(s) en tarif réduit</h3>
-            <input type="checkbox" name="tarifReduit" id="tarifReduit">
+            <input type="checkbox" name="tarifReduit" id="tarifreduitRadio">
             <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
 
             <h3>Choisissez votre formule :</h3>

@@ -3,9 +3,9 @@ body {
     margin:0;
     padding: 0;
     background-image: url("./medias/concert-852575_1920.jpg");
-    background-size: cover;
-    
+
 }
+    
 
 
 h1{
@@ -27,19 +27,16 @@ h1{
     opacity: 0.8;
     border-radius:22px;
     width: 50%;
-    margin: 3% 25%;
+    margin: 3% 22%;
     padding:3%;
 }
     
 #pass1jourDate,
-#pass2joursDate
- {
+#pass2joursDate {
     display: flex;
     margin-bottom: 15px;
     align-items: first baseline;
-    
-   
-  }
+}
 
 #reservation label {
     margin-bottom: 10px;

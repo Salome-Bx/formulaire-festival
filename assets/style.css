@@ -74,3 +74,8 @@ input[type=checkbox] {
 #coordonnees label{
     margin-bottom: 10px;
 }
+
+.tarifHidden {
+    display: none !important; 
+}
+

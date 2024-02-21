@@ -3,6 +3,52 @@
 // fin code Salome
 
 // début code Elodie
+
+//Réservation
+let pass1jour = document.querySelector("#pass1jour");
+let pass2jours = document.querySelector("#pass2jours");
+let pass3jours = document.querySelector("#pass3jours");
+
+let choixJour1 = document.querySelector("#choixJour1");
+let choixJour2 = document.querySelector("#choixJour2");
+let choixJour3 = document.querySelector("#choixJour3");
+let choixJour12 = document.querySelector("#choixJour12");
+let choixJour23 = document.querySelector("#choixJour23");
+
+pass1jour.addEventListener("change", () => {
+  decocher(pass1jour, pass2jours);
+  decocher(pass1jour, pass3jours);
+});
+pass2jours.addEventListener("change", () => {
+  decocher(pass2jours, pass1jour);
+  decocher(pass2jours, pass3jours);
+});
+pass3jours.addEventListener("change", () => {
+  decocher(pass3jours, pass2jours);
+  decocher(pass3jours, pass1jour);
+});
+
+choixJour1.addEventListener("change", () => {
+  decocher(choixJour1, choixJour2);
+  decocher(choixJour1, choixJour3);
+});
+choixJour2.addEventListener("change", () => {
+  decocher(choixJour2, pass2jours);
+  decocher(choixJour2, choixJour3);
+});
+choixJour3.addEventListener("change", () => {
+  decocher(choixJour3, choixJour1);
+  decocher(choixJour3, choixJour2);
+});
+
+choixJour12.addEventListener("change", () => {
+  decocher(choixJour12, choixJour23);
+});
+choixJour23.addEventListener("change", () => {
+  decocher(choixJour23, choixJour12);
+});
+
+//Option
 let tenteNuit1 = document.querySelector("#tenteNuit1");
 let tenteNuit2 = document.querySelector("#tenteNuit2");
 let tenteNuit3 = document.querySelector("#tenteNuit3");

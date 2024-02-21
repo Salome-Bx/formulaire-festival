@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire de réservation Music Vercos Festival</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de réservation Music Vercos Festival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
 
-<!------------------- HEADER ------------------->
+    <!------------------- HEADER ------------------->
     <header class="header">
         <h1>Vercors Musique Festival</h1>
     </header>
     <!------------------- BODY ------------------->
+
   <form action="traitement.php" id="inscription" method="POST">
     <div id="reservation" class="blocFormulaire">
         
@@ -105,7 +108,7 @@
         </section>
 
         <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
-        <label for="NombreLugesEte">Nombre de descentes en luge d'été :</label>
+        <label for="NombreLugesEte">Nombre de descentes en luge d'été (5€/descente) :</label>
         <input type="number" name="NombreLugesEte" id="NombreLugesEte">
 
         <p class="bouton boutonOptions" onclick="suivant(blocOptions, blocCoordonnees)">Suivant</p>
@@ -115,6 +118,7 @@
     <div id="coordonnees" class="blocFormulaire">
         
         <h2>Coordonnées</h2>
+
             <label for="nom">Nom :</label>
             <input type="text" name="nom" id="nom" required>
             <label for="prenom">Prénom :</label>
@@ -127,9 +131,10 @@
             <input type="text" name="adressePostale" id="adressePostale" required>
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
-        
-    </div>
-  </form>
+
+        </div>
+    </form>
 </body>
 <script src="./assets/script.js"></script>
+
 </html>

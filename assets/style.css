@@ -61,6 +61,10 @@ input[type=checkbox] {
     
 }
 
+.bouton:hover {
+    background-color: purple;
+}
+
 #coordonnees {
     display: flex;
     flex-direction: column;
@@ -73,4 +77,10 @@ input[type=checkbox] {
 
 #coordonnees label{
     margin-bottom: 10px;
+}
+
+
+.hidden {
+    display: none !important;
+    
 }

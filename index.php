@@ -65,9 +65,10 @@
 
         <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
-        <p class="bouton" onclick="suivant('option')">Suivant</p>
+        <p class="bouton boutonReservation" onclick="suivant(blocReservation, blocOptions)">Suivant</p>
         
     </div>
+
     <div id="options" class="blocFormulaire">
         
         <h2>Options</h2>
@@ -107,7 +108,7 @@
         <label for="NombreLugesEte">Nombre de descentes en luge d'été :</label>
         <input type="number" name="NombreLugesEte" id="NombreLugesEte">
 
-        <p class="bouton" onclick="suivant('coordonnees')">Suivant</p>
+        <p class="bouton boutonOptions" onclick="suivant(blocOptions, blocCoordonnees)">Suivant</p>
         
     </div>
 
@@ -130,4 +131,5 @@
     </div>
   </form>
 </body>
+<script src="./assets/script.js"></script>
 </html>

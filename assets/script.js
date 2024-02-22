@@ -25,26 +25,38 @@ let displayPass1Jour = document.querySelector("#pass1jourDate");
 let displayPass2Jour = document.querySelector("#pass2joursDate");
 let displayTarifReduit = document.querySelector("#tarifreduit");
 
+let divPass1Jour = document.querySelector(".divPass1Jour");
+let divPass2Jours = document.querySelector(".divPass2Jours");
+let divPass3Jours = document.querySelector(".divPass3Jours");
+
 tarifreduit.addEventListener("click", function () {
-  console.log("ça marche");
-  displayPass1Jour.classList.add("tarifHidden");
-  displayPass2Jour.classList.add("tarifHidden");
-  displayTarifReduit.classList.remove("tarifHidden");
+  if (tarifreduit.checked === true) {
+    displayPass1Jour.classList.add("tarifHidden");
+    displayPass2Jour.classList.add("tarifHidden");
+    divPass1Jour.classList.add("tarifHidden");
+    divPass2Jours.classList.add("tarifHidden");
+    divPass3Jours.classList.add("tarifHidden");
+    displayTarifReduit.classList.remove("tarifHidden");
+  } else {
+    divPass1Jour.classList.remove("tarifHidden");
+    divPass2Jours.classList.remove("tarifHidden");
+    divPass3Jours.classList.remove("tarifHidden");
+    displayTarifReduit.classList.add("tarifHidden");
+  }
 });
 pass1Jour.addEventListener("click", function () {
-  console.log("ça marche");
   displayTarifReduit.classList.add("tarifHidden");
   displayPass2Jour.classList.add("tarifHidden");
   displayPass1Jour.classList.remove("tarifHidden");
 });
 pass2Jour.addEventListener("click", function () {
-  console.log("ça marche");
   displayTarifReduit.classList.add("tarifHidden");
   displayPass1Jour.classList.add("tarifHidden");
   displayPass2Jour.classList.remove("tarifHidden");
 });
 pass3Jour.addEventListener("click", function () {
-  console.log("ça marche");
+  displayPass1Jour.classList.add("tarifHidden");
+  displayPass2Jour.classList.add("tarifHidden");
 });
 
 // fin code Aubin
@@ -80,7 +92,7 @@ choixJour1.addEventListener("change", () => {
   decocher(choixJour1, choixJour3);
 });
 choixJour2.addEventListener("change", () => {
-  decocher(choixJour2, pass2jours);
+  decocher(choixJour2, choixJour1);
   decocher(choixJour2, choixJour3);
 });
 choixJour3.addEventListener("change", () => {
@@ -108,6 +120,7 @@ let van3Nuits = document.querySelector("#van3Nuits");
 
 let enfantsOui = document.querySelector("input[name=enfantsOui]");
 let enfantsNon = document.querySelector("input[name=enfantsNon]");
+let casqueEnfant = document.querySelector(".casqueEnfant");
 
 tenteNuit1.addEventListener("change", () => {
   decocher(tenteNuit1, tente3Nuits);
@@ -141,9 +154,17 @@ van3Nuits.addEventListener("change", () => {
 
 enfantsOui.addEventListener("change", () => {
   decocher(enfantsOui, enfantsNon);
+  if (enfantsOui.checked === true) {
+    casqueEnfant.classList.remove("tarifHidden");
+  } else {
+    casqueEnfant.classList.add("tarifHidden");
+  }
 });
 enfantsNon.addEventListener("change", () => {
   decocher(enfantsNon, enfantsOui);
+  if (enfantsNon.checked === true) {
+    casqueEnfant.classList.add("tarifHidden");
+  }
 });
 
 /**

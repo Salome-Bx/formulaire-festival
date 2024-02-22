@@ -3,6 +3,7 @@
 let blocReservation = document.querySelector('#reservation');
 
 
+
 let blocOptions = document.querySelector('#options');
 blocOptions.classList.add("hidden");
 

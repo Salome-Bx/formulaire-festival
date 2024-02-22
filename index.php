@@ -17,7 +17,7 @@
         <h1>Vercors Musique Festival</h1>
     </header>
     <!------------------- BODY ------------------->
-  <form action="traitement.php" id="inscription" method="POST">
+  <form action="" id="inscription" method="POST" onsubmit="verification()">
     <div id="reservation" class="blocFormulaire">
         
         <h2>Réservation</h2>
@@ -114,18 +114,18 @@
     </div>
 
     <div id="coordonnees" class="blocFormulaire">
-        
+        <div class="messageErreurChampsVides"></div>
         <h2>Coordonnées</h2>
             <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" required>
+            <input type="text" name="nom" id="nom" >
             <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" id="prenom" required>
+            <input type="text" name="prenom" id="prenom" >
             <label for="email">Email :</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" >
             <label for="telephone">Téléphone :</label>
-            <input type="text" name="telephone" id="telephone" required>
+            <input type="text" name="telephone" id="telephone" >
             <label for="adressePostale">Adresse Postale :</label>
-            <input type="text" name="adressePostale" id="adressePostale" required>
+            <input type="text" name="adressePostale" id="adressePostale" >
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
         
@@ -133,4 +133,5 @@
   </form>
 </body>
 <script src="./assets/script.js"></script>
+<script src="./assets/traitement.js"></script>
 </html>

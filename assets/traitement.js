@@ -23,15 +23,12 @@ let formulaire = document.querySelector("#inscription");
  */
 formulaire.addEventListener("submit", function (evenement) {
 
-    alert("Coucouuuu");
     if (champsNom.value == "" || champsPrenom.value == "" || champsEmail.value == "" || champsTelehone.value == "" && champsAdresse.value == "") {
         evenement.preventDefault();
         document.querySelector('.messageErreurChampsVides').innerText = `Merci de remplir tous les champs.`;
     }
     else if (isNaN(champsTelehone.value)) {
-        alert("Coucouuuu2");
         evenement.preventDefault();
-        alert("Coucouuuu3");
         document.querySelector('.messageErreurChampsVides').innerText = `Merci de mettre un numéro de téléphone valide.`;
     }
     if (checkEmail(champsEmail.value) == false) {

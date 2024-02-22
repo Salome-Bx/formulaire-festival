@@ -2,7 +2,8 @@
 // récupération des 3 blocs du formulaire
 let blocReservation = document.querySelector("#reservation");
 
-let blocOptions = document.querySelector("#options");
+let blocOptions = document.querySelector('#options');
+
 blocOptions.classList.add("hidden");
 
 let blocCoordonnees = document.querySelector("#coordonnees");

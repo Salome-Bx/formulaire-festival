@@ -156,7 +156,7 @@
         <div id="coordonnees" class="blocFormulaire">
 
             <h2>Coordonnées</h2>
-
+            <div class="messageErreurChampsVides"></div>
 
             <label for="nom">Nom :</label>
             <input type="text" name="nom" id="nom" >

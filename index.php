@@ -31,12 +31,16 @@
             <h3>Nombre de réservation(s) :</h3>
             <input type="number" name="nombrePlaces" id="NombrePlaces" required>
             <h3>Réservation(s) en tarif réduit</h3>
-            <input type="checkbox" name="tarifReduit" id="tarifreduitRadio">
-            <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
+            <div>
+                <input type="checkbox" name="tarifReduit" id="tarifreduitRadio">
+                <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
+            </div>
 
             <h3>Choisissez votre formule :</h3>
-            <input type="checkbox" name="passSelection" id="pass1jour">
-            <label for="pass1jour">Pass 1 jour : 40€</label>
+            <div class="divPass1Jour">
+                <input type="checkbox" name="passSelection" id="pass1jour">
+                <label for="pass1jour">Pass 1 jour : 40€</label>
+            </div>
 
             <!-- Si case cochée, afficher le choix du jour -->
             <section id="pass1jourDate" class="tarifHidden">
@@ -48,8 +52,10 @@
                 <label for="choixJour3">Pass pour la journée du 03/07</label>
             </section>
 
-            <input type="checkbox" name="passSelection" id="pass2jours">
-            <label for="pass2jours">Pass 2 jours : 70€</label>
+            <div class="divPass2Jours">
+                <input type="checkbox" name="passSelection" id="pass2jours">
+                <label for="pass2jours">Pass 2 jours : 70€</label>
+            </div>
 
             <!-- Si case cochée, afficher le choix des jours -->
             <section id="pass2joursDate" class="tarifHidden">
@@ -59,16 +65,18 @@
                 <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
             </section>
 
-            <input type="checkbox" name="passSelection" id="pass3jours">
-            <label for="pass3jours">Pass 3 jours : 100€</label>
+            <div class="divPass3Jours">
+                <input type="checkbox" name="passSelection" id="pass3jours">
+                <label for="pass3jours">Pass 3 jours : 100€</label>
+            </div>
 
 
             <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
             <div id="tarifreduit" class="tarifHidden">
                 <input type="checkbox" name="passSelection" id="pass1jourreduit">
-                <label for="pass1jourreduit">Pass 1 jour : 25€</label>
+                <label for="pass1jourreduit">Pass 1 jour : 25€</label> <br>
                 <input type="checkbox" name="passSelection" id="pass2joursreduit">
-                <label for="pass2joursreduit">Pass 2 jours : 50€</label>
+                <label for="pass2joursreduit">Pass 2 jours : 50€</label> <br>
                 <input type="checkbox" name="passSelection" id="pass3joursreduit">
                 <label for="pass3joursreduit">Pass 3 jours : 65€</label>
             </div>
@@ -128,7 +136,7 @@
 
 
             <!-- Si oui, afficher : -->
-            <section>
+            <section class="casqueEnfant tarifHidden">
                 <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
                 <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
                 <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants">

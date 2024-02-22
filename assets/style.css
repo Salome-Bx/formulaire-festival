@@ -24,6 +24,12 @@ h1 {
   width: 50%;
   margin: 3% 22%;
   padding: 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+#NombrePlaces {
+  width: 30%;
 }
 
 #pass1jourDate,

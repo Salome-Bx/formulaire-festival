@@ -13,8 +13,9 @@ class Reservation
     private $_nbrDescenteLuge;
     private $_prixDescenteLuge;
     public $_prixTotal;
+    private $_idUser;
 
-    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, int|string $id = "à créer")
+    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
     {
         $this->setId($id);
         $this->setNbrReservation($nbrReservation);
@@ -27,6 +28,8 @@ class Reservation
         $this->setPrixTotalCasqueEnfant($nbrCasqueEnfant);
         $this->setNbrDescenteLuge($nbrDescenteLuge);
         $this->setPrixDescenteLuge($nbrDescenteLuge);
+        $this->setIdUser($idUser);
+
     }
 
 
@@ -68,13 +71,25 @@ class Reservation
     {
         return $this->_prixTotalReservation;
     }
+
     public function setPrixTotalReservation(string $typeRerservation): int
     {
-        if ($typeRerservation === '') {
-            //Là il faut compléter pour que suivant le type de reservation ça nous renvoit un prix (ici j'ai mis 40 pour l'exemple)
-
-            return $this->_prixTotalReservation = 40 * $this->getNbrReservation();
+        if ($typeRerservation === '1Journee0107' || $typeRerservation === '1Journee0207' || $typeRerservation === '1Journee0307') {
+            //Là il faut compléter pour que suivant le type de reservation ça nous renvoit un prix (ici j'ai 
+            //mis 40 pour l'exemple)
+            $prix = 40;
+        } else if ($typeRerservation === '2Journees01070207' || $typeRerservation === '2Journees02070307') {
+            $prix = 70;
+        } else if ($typeRerservation === '3Journees') {
+            $prix = 100;
+        } else if ($typeRerservation === '1JourneeReduit') {
+            $prix = 25;
+        } else if ($typeRerservation === '2JourneesReduit') {
+            $prix = 50;
+        } else if ($typeRerservation === '3JourneesReduit') {
+            $prix = 65;
         }
+        return $this->_prixTotalReservation = $prix * $this->getNbrReservation();
     }
 
     public function getNuit(): string
@@ -145,19 +160,29 @@ class Reservation
 
 
 
-    ////////////Attention fonciton copié coller, qui n'est pas à jour avec notre code////////////
-    // private function CreerNouvelId()
-    // {
-    //     $Database = new Database();
-    //     $utilisateurs = $Database->getAllUtilisateurs();
 
-    //     // On crée un tableau dans lequel on stockera tous les ids existants.
-    //     $IDs = [];
+    public function getIdUser(): string
+    {
+        return $this->_idUser;
+    }
+    public function setIdUser(string $IdUser): void
+    {
+        $this->_idUser = $IdUser;
+    }
 
-    //     foreach ($utilisateurs as $utilisateur) {
-    //         $IDs[] = $utilisateur->getId();
-    //     }
-    // }
+
+    private function CreerNouvelId()
+    {
+        $Database = new Database("User");
+        $utilisateurs = $Database->getAllUtilisateurs();
+
+        // On crée un tableau dans lequel on stockera tous les ids existants.
+        $IDs = [];
+
+        foreach ($utilisateurs as $utilisateur) {
+            $IDs[] = $utilisateur->getId();
+        }
+    }
 
     ////////////Nos fonctions////////////
     public function calculerPrix(): int
@@ -165,4 +190,20 @@ class Reservation
         $prixTotal = $this->getPrixTotalReservation() + $this->getPrixTotalNuit() + $this->getPrixTotalCasqueEnfant() + $this->getPrixTotalCasqueEnfant() + $this->getPrixDescenteLuge();
         return $this->_prixTotal = $prixTotal;
     }
+
+
+public function getObjectToArray(): array {
+    return [
+      "NbrReservation" => $this->getNbrReservation(),
+      "TypeRerservation" => $this->getTypeRerservation(),
+      "Nuit" => $this->getNuit(),
+      "NbrEnfant" => $this->getNbrEnfant(),
+      "NbrCasqueEnfant" => $this->getNbrCasqueEnfant(),
+      "NbrDescenteLuge" => $this->getNbrDescenteLuge(),
+      "PrixTotal" => $this->calculerPrix(),
+
+    ];
+  }
+
+
 }

@@ -5,8 +5,10 @@ class User {
   private $_nom;
   private $_prenom;
   private $_mail;
-  private $_password;
-  private $_role;
+  private $_tel;
+  private $_adresse;
+  // private $_password;
+  
 
   /**
    * Création d'un nouvel utilisateur
@@ -16,13 +18,15 @@ class User {
    * @param string $password Le mot de passe chiffré de l'utilisateur
    * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
    */
-  function __construct(string $nom, string $prenom,string $mail,string $password,int|string $id = "à créer",string $role = "user"){
+  function __construct(string $nom, string $prenom, string $mail, int $tel, string $adresse, int|string $id = "à créer"){
     $this->setId($id);
     $this->setNom($nom);
     $this->setPrenom($prenom);
     $this->setMail($mail);
-    $this->setPassword($password);
-    $this->setRole($role);
+    $this->setTel($tel);
+    $this->setAdresse($adresse);
+    // $this->setPassword($password);
+    
   }
 
   public function getId(): int {
@@ -54,30 +58,34 @@ class User {
   public function setMail(string $mail): void {
     $this->_mail = $mail;
   }
-  public function getPassword(): string {
-    return $this->_password;
+
+  public function getTel(): int {
+    return $this->_tel;
   }
-  public function setPassword(string $password): void {
-    $this->_password = $password;
+  public function setTel(int $tel) {
+    $this->_tel = $tel;
   }
 
-  public function getRole(): string {
-    return $this->_role;
+  public function getAdresse(): string {
+    return $this->_adresse;
   }
-  public function setRole(string $role): void {
-    $this->_role = $role;
+  public function setAdresse(string $adresse): void {
+    $this->_adresse = $adresse;
   }
 
-  public function isAdmin() {
-    if ($this->getRole() == "admin") {
-      return true;
-    }else {
-      return false;
-    }
-  }
+  // public function getPassword(): string {
+  //   return $this->_password;
+  // }
+  // public function setPassword(string $password): void {
+  //   $this->_password = $password;
+  // }
+
+
+
+
 
   private function CreerNouvelId(){
-    $Database = new Database();
+    $Database = new Database("User");
     $utilisateurs = $Database->getAllUtilisateurs();
 
     // On crée un tableau dans lequel on stockera tous les ids existants.
@@ -106,8 +114,10 @@ class User {
       "nom" => $this->getNom(),
       "prenom" => $this->getPrenom(),
       "mail" => $this->getMail(),
-      "password" => $this->getPassword(),
-      "role" => $this->getRole()
+      "tel" => $this->getTel(),
+      "adresse" => $this->getAdresse()
+      // "password" => $this->getPassword()
+     
     ];
   }
 }

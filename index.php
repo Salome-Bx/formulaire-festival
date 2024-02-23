@@ -19,6 +19,7 @@
 
     <!------------------- HEADER ------------------->
     <header class="header">
+        <a href="./connexion.php" class="boutonConnexion">Connexion</a>
         <h1>Vercors Musique Festival</h1>
     </header>
     <!------------------- BODY ------------------->
@@ -37,46 +38,46 @@
 
             <h3>Choisissez votre formule :</h3>
             <div class="divPass1Jour">
-                <input type="checkbox" name="passSelection" id="pass1jour">
+                <input type="checkbox" name="pass1jour" id="pass1jour">
                 <label for="pass1jour">Pass 1 jour : 40€</label>
             </div>
 
             <!-- Si case cochée, afficher le choix du jour -->
             <section id="pass1jourDate" class="tarifHidden">
-                <input type="checkbox" name="passSelection" id="choixJour1">
+                <input type="checkbox" name="choixJour1" id="choixJour1">
                 <label for="choixJour1">Pass pour la journée du 01/07</label>
-                <input type="checkbox" name="passSelection" id="choixJour2">
+                <input type="checkbox" name="choixJour2" id="choixJour2">
                 <label for="choixJour2">Pass pour la journée du 02/07</label>
-                <input type="checkbox" name="passSelection" id="choixJour3">
+                <input type="checkbox" name="choixJour3" id="choixJour3">
                 <label for="choixJour3">Pass pour la journée du 03/07</label>
             </section>
 
             <div class="divPass2Jours">
-                <input type="checkbox" name="passSelection" id="pass2jours">
+                <input type="checkbox" name="pass2jours" id="pass2jours">
                 <label for="pass2jours">Pass 2 jours : 70€</label>
             </div>
 
             <!-- Si case cochée, afficher le choix des jours -->
             <section id="pass2joursDate" class="tarifHidden">
-                <input type="checkbox" name="passSelection" id="choixJour12">
+                <input type="checkbox" name="choixJour12" id="choixJour12">
                 <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
-                <input type="checkbox" name="passSelection" id="choixJour23">
+                <input type="checkbox" name="choixJour23" id="choixJour23">
                 <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
             </section>
 
             <div class="divPass3Jours">
-                <input type="checkbox" name="passSelection" id="pass3jours">
+                <input type="checkbox" name="pass3jours" id="pass3jours">
                 <label for="pass3jours">Pass 3 jours : 100€</label>
             </div>
 
 
             <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
             <div id="tarifreduit" class="tarifHidden">
-                <input type="checkbox" name="passSelection" id="pass1jourreduit">
+                <input type="checkbox" name="pass1jourreduit" id="pass1jourreduit">
                 <label for="pass1jourreduit">Pass 1 jour : 25€</label> <br>
-                <input type="checkbox" name="passSelection" id="pass2joursreduit">
+                <input type="checkbox" name="pass2joursreduit" id="pass2joursreduit">
                 <label for="pass2joursreduit">Pass 2 jours : 50€</label> <br>
-                <input type="checkbox" name="passSelection" id="pass3joursreduit">
+                <input type="checkbox" name="pass3joursreduit" id="pass3joursreduit">
                 <label for="pass3joursreduit">Pass 3 jours : 65€</label>
             </div>
 
@@ -156,18 +157,18 @@
         <div id="coordonnees" class="blocFormulaire">
 
             <h2>Coordonnées</h2>
-
+            <div class="messageErreurChampsVides"></div>
 
             <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" >
+            <input type="text" name="nom" id="nom">
             <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" id="prenom" >
+            <input type="text" name="prenom" id="prenom">
             <label for="email">Email :</label>
-            <input type="email" name="email" id="email" >
+            <input type="email" name="email" id="email">
             <label for="telephone">Téléphone :</label>
-            <input type="text" name="telephone" id="telephone" >
+            <input type="text" name="telephone" id="telephone">
             <label for="adressePostale">Adresse Postale :</label>
-            <input type="text" name="adressePostale" id="adressePostale" >
+            <input type="text" name="adressePostale" id="adressePostale">
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
 

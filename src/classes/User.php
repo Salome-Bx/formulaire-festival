@@ -5,8 +5,10 @@ class User {
   private $_nom;
   private $_prenom;
   private $_mail;
-  private $_password;
-  private $_role;
+  private $_telephone;
+  private $_adresse;
+  // private $_password;
+  
 
   /**
    * Création d'un nouvel utilisateur
@@ -16,13 +18,12 @@ class User {
    * @param string $password Le mot de passe chiffré de l'utilisateur
    * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
    */
-  function __construct(string $nom, string $prenom,string $mail,string $password,int|string $id = "à créer",string $role = "user"){
+  function __construct(string $nom, string $prenom,string $mail,string $password,int|string $id = "à créer",){
     $this->setId($id);
     $this->setNom($nom);
     $this->setPrenom($prenom);
     $this->setMail($mail);
     $this->setPassword($password);
-    $this->setRole($role);
   }
 
   public function getId(): int {
@@ -64,17 +65,7 @@ class User {
   public function getRole(): string {
     return $this->_role;
   }
-  public function setRole(string $role): void {
-    $this->_role = $role;
-  }
 
-  public function isAdmin() {
-    if ($this->getRole() == "admin") {
-      return true;
-    }else {
-      return false;
-    }
-  }
 
   private function CreerNouvelId(){
     $Database = new Database();
@@ -106,8 +97,7 @@ class User {
       "nom" => $this->getNom(),
       "prenom" => $this->getPrenom(),
       "mail" => $this->getMail(),
-      "password" => $this->getPassword(),
-      "role" => $this->getRole()
+      "password" => $this->getPassword()
     ];
   }
 }

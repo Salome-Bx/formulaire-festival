@@ -1,4 +1,5 @@
 <?php
+
 class Reservation
 {
     private $_id;
@@ -14,7 +15,7 @@ class Reservation
     private $_prixDescenteLuge;
     public $_prixTotal;
 
-    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, int|string $id = "à créer")
+    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, bool $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, int|string $id = "à créer")
     {
         $this->setId($id);
         $this->setNbrReservation($nbrReservation);
@@ -98,11 +99,11 @@ class Reservation
         }
     }
 
-    public function getNbrEnfant(): string
+    public function getNbrEnfant(): bool
     {
         return $this->_nbrEnfant;
     }
-    public function setNbrEnfant(string $nbrEnfant): void
+    public function setNbrEnfant(bool $nbrEnfant): void
     {
         $this->_nbrEnfant = $nbrEnfant;
     }

@@ -29,15 +29,78 @@
 
     <div class="blocFormulaire">
         <ul>
+            <!-- $typeRerservation, $nuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $idUser -->
             <li><?= $nom ?></li>
             <li><?= $prenom ?></li>
-            <li><?= $nbReservation ?></li>
-            <li><?= $emplacementTente ?></li>
-            <li><?= $emplacementCamion ?></li>
-            <li><?= $enfant ?></li>
-            <li><?= $nbDescenteLuge ?></li>
+            <li><?= "Vous avez pris " . $nbrReservation . " réservations." ?></li>
+            <li> <?php if ('choixJour1') {
+                        echo 'Vous avez réservé pour le 01/07';
+                    } else if ('choixJour2') {
+                        echo 'Vous avez réservé pour le 02/07';
+                    } else if ('choixJour3') {
+                        echo 'Vous avez réservé pour le 03/07';
+                    } else if ('choixJour12') {
+                        echo 'Vous avez réservé pour le 01/07 et le 02/07';
+                    } else if ('choixJour23') {
+                        echo 'Vous avez réservé pour le 02/07 et le 03/07';
+                    } else if ('pass3Jours') {
+                        echo 'Vous avez réservé pour les trois jours.';
+                    } else if ('pass1Jourreduit') {
+                        echo 'Vous avez pris un jour en tarif réduit';
+                    } else if ('pass2joursruit') {
+                        echo 'Vous avez pris deux jours en tarif réduit';
+                    } else if ('pass3joursruit') {
+                        echo 'Vous avez pris trois jours en tarif réduit';
+                    } ?></li>
+            <li><?php
+                $message = "";
+                foreach ($nuit as $indiceTableau) {
+                    switch ($indiceTableau) {
+                        case "nuit0107Tente":
+                            $message .= "Vous avez réservé une nuit en tente le 01/07.";
+                            break;
+                        case "nuit0207Tente":
+                            $message .= "Vous avez réservé une nuit en tente le 02/07.";
+                            break;
+                        case "nuit0307Tente":
+                            $message .= "Vous avez réservé une nuit en tente le 03/07.";
+                            break;
+                        case "3nuitTente":
+                            $message .= "Vous avez réservé les trois nuits en tente.";
+                            break;
+                        case "nuit0107Van":
+                            $message .= "Vous avez réservé une nuit en van le 01/07.";
+                            break;
+                        case "nuit0207Van":
+                            $message .= "Vous avez réservé une nuit en van le 02/07.";
+                            break;
+                        case "nuit0307Van":
+                            $message .= "Vous avez réservé une nuit en van le 03/07.";
+                            break;
+                        case "3nuitVan":
+                            $message .= "Vous avez réservé les trois nuits en van.";
+                            break;
+                    }
+                    echo $message;
+                }
+
+
+                ?></li>
+
+            <li><?php
+                if ($nbrEnfant == TRUE) {
+                    echo "Vous avez indiqué venir avec un ou des enfants, et réservé " . $nbrCasqueEnfant . " casque(s).";
+                }
+                ?></li>
+            <li><?php
+                if (!empty($nbrDescenteLuge))
+                    echo "Vous avez choisi de faire " . $nbrDescenteLuge . " descente(s) de luge."; ?></li>
         </ul>
-        <h2> Le montant total de votre commande est : <?= $prixTotal ?></h2>
+
+
+
+        <h2> Le montant total de votre commande est : <?php $prixTotal = $reservation->calculerPrix();
+                                                        echo $prixTotal . " €.";  ?></h2>
     </div>
 
 </body>

@@ -17,7 +17,7 @@ class Reservation
     private $_idUser;
 
 
-    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
+    function __construct(int $nbrReservation, string $typeRerservation, array $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
 
 
     {
@@ -33,7 +33,6 @@ class Reservation
         $this->setNbrDescenteLuge($nbrDescenteLuge);
         $this->setPrixDescenteLuge($nbrDescenteLuge);
         $this->setIdUser($idUser);
-
     }
 
 
@@ -97,11 +96,11 @@ class Reservation
         return $this->_prixTotalReservation = $prix * $this->getNbrReservation();
     }
 
-    public function getNuit(): string
+    public function getNuit(): array
     {
         return $this->_nuit;
     }
-    public function setNuit(string $nuit): void
+    public function setNuit(array $nuit): void
     {
         $this->_nuit = $nuit;
     }
@@ -110,12 +109,19 @@ class Reservation
     {
         return $this->_prixTotalNuit;
     }
-    public function setPrixTotalNuit(string $nuit): int
+
+    public function setPrixTotalNuit(array $nuit): int
     {
-        if ($nuit === '') {
-            //Là il faut compléter pour que suivant le nombre et le type de nuit (tente ou camion) ça nous renvoit un prix (ici j'ai mis 5 pour l'exemple)
-            return $this->_prixTotalNuit = 5;
+        $prix = 0;
+        foreach ($nuit as $checkNuit) {
+
+            if ($checkNuit == "nuit0107Tente" || "nuit0207Tente" || "nuit0307Tente" || "nuit0107Van" || "nuit0207Van" || "nuit0307Van") {
+                $prix += 5;
+            } else if ($checkNuit == "3nuitTente" || "3nuitVan") {
+                $prix += 12;
+            }
         }
+        return $this->_prixTotalNuit = $prix;
     }
 
     public function getNbrEnfant(): bool
@@ -127,11 +133,11 @@ class Reservation
         $this->_nbrEnfant = $nbrEnfant;
     }
 
-    public function getNbrCasqueEnfant(): string
+    public function getNbrCasqueEnfant(): int
     {
         return $this->_nbrCasqueEnfant;
     }
-    public function setNbrCasqueEnfant(string $nbrCasqueEnfant): void
+    public function setNbrCasqueEnfant(int $nbrCasqueEnfant): void
     {
         $this->_nbrCasqueEnfant = $nbrCasqueEnfant;
     }
@@ -173,18 +179,6 @@ class Reservation
     }
 
 
-
-
-    public function getIdUser(): string
-    {
-        return $this->_idUser;
-    }
-    public function setIdUser(string $IdUser): void
-    {
-        $this->_idUser = $IdUser;
-    }
-
-
     private function CreerNouvelId()
     {
         $Database = new Database("User");
@@ -206,18 +200,16 @@ class Reservation
     }
 
 
-public function getObjectToArray(): array {
-    return [
-      "NbrReservation" => $this->getNbrReservation(),
-      "TypeRerservation" => $this->getTypeRerservation(),
-      "Nuit" => $this->getNuit(),
-      "NbrEnfant" => $this->getNbrEnfant(),
-      "NbrCasqueEnfant" => $this->getNbrCasqueEnfant(),
-      "NbrDescenteLuge" => $this->getNbrDescenteLuge(),
-      "PrixTotal" => $this->calculerPrix(),
-
-    ];
-  }
-
-
+    public function getObjectToArray(): array
+    {
+        return [
+            "NbrReservation" => $this->getNbrReservation(),
+            "TypeRerservation" => $this->getTypeRerservation(),
+            "Nuit" => $this->getNuit(),
+            "NbrEnfant" => $this->getNbrEnfant(),
+            "NbrCasqueEnfant" => $this->getNbrCasqueEnfant(),
+            "NbrDescenteLuge" => $this->getNbrDescenteLuge(),
+            "PrixTotal" => $this->calculerPrix(),
+        ];
+    }
 }

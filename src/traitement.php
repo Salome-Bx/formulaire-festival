@@ -43,7 +43,7 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     $retourUser = $databaseUser->saveUtilisateur($user);
 
 
-    
+
     if (isset($_POST['choixJour1'])) {
         $typeRerservation = '1Journee0107';
     } else if (isset($_POST['choixJour2'])) {
@@ -64,16 +64,67 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         $typeRerservation = '3JourneesReduit';
     }
 
+    // Création d'un tableau avec la méthode POST pour récupérer le type de nuit choisis
+    $nbrReservation = htmlspecialchars($_POST['nombrePlaces']);
+    $nuit = [];
+    if (isset($_POST['tenteNuit1'])) {
+        array_push($nuit, 'nuit0107Tente ');
+    }
+    if (isset($_POST['tenteNuit2'])) {
+        array_push($nuit, 'nuit0207Tente ');
+    }
+    if (isset($_POST['tenteNuit3'])) {
+        array_push($nuit, 'nuit0307Tente');
+    }
+    if (isset($_POST['tente3Nuits'])) {
+        array_push($nuit, '3nuitTente');
+    }
+    if (isset($_POST['vanNuit1'])) {
+        array_push($nuit, 'nuit0107Van');
+    }
+    if (isset($_POST['vanNuit2'])) {
+        array_push($nuit, 'nuit0207Van');
+    }
+    if (isset($_POST['vanNuit3'])) {
+        array_push($nuit, 'nuit0307Van');
+    }
+    if (isset($_POST['van3Nuits'])) {
+        array_push($nuit, '3nuitVan');
+    }
+
+    var_dump($nuit);
 
 
-    $reservation = new Reservation($nbrReservation, $typeRerservation, $_prixTotalReservation, $nuit, $_prixTotalNuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $_prixDescenteLuge, $_prixTotal, $id = "à créer");
+
+    if (isset($_POST['enfantsOui'])) {
+        $nbrEnfant = TRUE;
+    } else {
+        $nbrEnfant = FALSE;
+    }
+
+    if (isset($_POST['nombreCasquesEnfants']) && !empty($_POST['nombreCasquesEnfants'])) {
+        $nbrCasqueEnfant = $_POST['nombreCasquesEnfants'];
+    } else {
+        $nbrCasqueEnfant = 0;
+    };
+
+    if (isset($_POST['NombreLugesEte']) && !empty($_POST['NombreLugesEte'])) {
+        $nbrDescenteLuge = $_POST['NombreLugesEte'];
+    } else {
+        $nbrDescenteLuge = 0;
+    };
+
+
+    $idUser = $user->getId();
+
+
+    $reservation = new Reservation($nbrReservation, $typeRerservation, $nuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $idUser);
     $retourReservation = $databaseReservation->saveReservation($reservation);
 
- 
+
 
     if ($retourUser) {
-        header('location:../connexion.php?succes=inscription');
-
+        include "../includes/popUp.php";
         die;
     } else {
         header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
@@ -83,5 +134,4 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
     header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
-
 }

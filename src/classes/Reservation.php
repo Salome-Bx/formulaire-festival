@@ -1,4 +1,5 @@
 <?php
+
 class Reservation
 {
     private $_id;
@@ -15,7 +16,10 @@ class Reservation
     public $_prixTotal;
     private $_idUser;
 
+
     function __construct(int $nbrReservation, string $typeRerservation, string $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
+
+
     {
         $this->setId($id);
         $this->setNbrReservation($nbrReservation);
@@ -75,8 +79,9 @@ class Reservation
     public function setPrixTotalReservation(string $typeRerservation): int
     {
         if ($typeRerservation === '1Journee0107' || $typeRerservation === '1Journee0207' || $typeRerservation === '1Journee0307') {
-            //Là il faut compléter pour que suivant le type de reservation ça nous renvoit un prix (ici j'ai 
-            //mis 40 pour l'exemple)
+
+            //Là il faut compléter pour que suivant le type de reservation ça nous renvoit un prix (ici j'ai mis 40 pour l'exemple)
+
             $prix = 40;
         } else if ($typeRerservation === '2Journees01070207' || $typeRerservation === '2Journees02070307') {
             $prix = 70;
@@ -113,11 +118,11 @@ class Reservation
         }
     }
 
-    public function getNbrEnfant(): string
+    public function getNbrEnfant(): bool
     {
         return $this->_nbrEnfant;
     }
-    public function setNbrEnfant(string $nbrEnfant): void
+    public function setNbrEnfant(bool $nbrEnfant): void
     {
         $this->_nbrEnfant = $nbrEnfant;
     }
@@ -156,6 +161,15 @@ class Reservation
     public function setPrixDescenteLuge(int $nbrDescenteLuge): void
     {
         $this->_prixDescenteLuge = $nbrDescenteLuge * 5;
+    }
+
+    public function getIdUser(): int
+    {
+        return $this->_idUser;
+    }
+    public function setIdUser(int $idUser): void
+    {
+        $this->_idUser = $idUser;
     }
 
 

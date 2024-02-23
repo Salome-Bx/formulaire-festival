@@ -2,8 +2,10 @@
 
 // importer ici les classes nécéssaires
 require_once "./classes/User.php";
+
 require_once "./classes/Database.php";
 require_once "./classes/Reservation.php";
+
 require_once "./config.php";
 
 
@@ -21,6 +23,7 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     } else {
         header('location:../index.php?erreur=' . ERREUR_EMAIL);
     }
+
 
     // if ($_POST['password'] === $_POST['password2']) {
     //     if (strlen($_POST['password']) >= 8) {
@@ -70,18 +73,15 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
     if ($retourUser) {
         header('location:../connexion.php?succes=inscription');
+
         die;
-    }else {
+    } else {
         header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
         die;
     }
+} else {
 
-    
-} 
-    else {
-        header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
-   
+
+    header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
+
 }
-
-
-

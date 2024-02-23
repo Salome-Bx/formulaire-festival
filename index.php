@@ -19,6 +19,7 @@
 
     <!------------------- HEADER ------------------->
     <header class="header">
+        <a href="./connexion.php" class="boutonConnexion">Connexion</a>
         <h1>Vercors Musique Festival</h1>
     </header>
     <!------------------- BODY ------------------->
@@ -173,6 +174,7 @@
 
         </div>
     </form>
+  
 </body>
 <script src="./assets/script.js"></script>
 <script src="./assets/traitement.js"></script>

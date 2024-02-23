@@ -2,12 +2,18 @@
 
 // importer ici les classes nécéssaires
 require_once "./classes/User.php";
+
+require_once "./classes/Database.php";
+require_once "./classes/Reservation.php";
+
 require_once "./config.php";
 
 
 
 if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['email']) && isset($_POST['telephone']) && isset($_POST['adressePostale']) && !empty($_POST['nombrePlaces']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['adressePostale'])) {
 
+    $databaseUser = new Database("User");
+    $databaseReservation = new Database("Reservation");
 
     $prenom = htmlspecialchars($_POST['prenom']);
     $nom = htmlspecialchars($_POST['nom']);
@@ -19,18 +25,25 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     }
 
 
-
     // if ($_POST['password'] === $_POST['password2']) {
     //     if (strlen($_POST['password']) >= 8) {
     //         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     //     } else {
     //         header('location:../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
     //     }
-    // } else {
+    // }else {
     //     header('location:../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
     // }
 
-    $typeRerservation;
+    $tel = $_POST['telephone'];
+    $adresse = $_POST['adressePostale'];
+
+    $user = new User($nom, $prenom, $mail, $tel, $adresse);
+
+    $retourUser = $databaseUser->saveUtilisateur($user);
+
+
+    
     if (isset($_POST['choixJour1'])) {
         $typeRerservation = '1Journee0107';
     } else if (isset($_POST['choixJour2'])) {
@@ -52,10 +65,14 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     }
 
 
-    if ($retour) {
-          
-        // Appel de la page de récapitulation 
-         include "./includes/popUp.php";
+
+    $reservation = new Reservation($nbrReservation, $typeRerservation, $_prixTotalReservation, $nuit, $_prixTotalNuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $_prixDescenteLuge, $_prixTotal, $id = "à créer");
+    $retourReservation = $databaseReservation->saveReservation($reservation);
+
+ 
+
+    if ($retourUser) {
+        header('location:../connexion.php?succes=inscription');
 
         die;
     } else {
@@ -64,5 +81,7 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     }
 } else {
 
+
     header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
+
 }

@@ -22,11 +22,14 @@ let formulaire = document.querySelector("#inscription");
  */
 formulaire.addEventListener("submit", function (evenement) {
 
+
     if (champsNom.value == "" || champsPrenom.value == "" || champsEmail.value == "" || champsTelehone.value == "" || champsAdresse.value == "") {
+
         evenement.preventDefault();
         document.querySelector('.messageErreurChampsVides').innerText = `Merci de remplir tous les champs.`;
     }
     else if (isNaN(champsTelehone.value)) {
+
         evenement.preventDefault();
         document.querySelector('.messageErreurChampsVides').innerText = `Merci de mettre un numéro de téléphone valide.`;
     }

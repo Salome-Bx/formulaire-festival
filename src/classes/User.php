@@ -10,7 +10,6 @@ class User
   private $_adresse;
   // private $_password;
 
-
   /**
    * Création d'un nouvel utilisateur
    * @param string $nom      Le nom de l'utilisateur
@@ -21,6 +20,7 @@ class User
    */
   function __construct(string $nom, string $prenom, string $mail, string $password, int|string $id = "à créer")
   {
+
     $this->setId($id);
     $this->setNom($nom);
     $this->setPrenom($prenom);
@@ -75,6 +75,7 @@ class User
 
   private function CreerNouvelId()
   {
+
     $Database = new Database();
     $utilisateurs = $Database->getAllUtilisateurs();
 

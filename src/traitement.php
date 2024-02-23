@@ -53,12 +53,16 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
     if ($retour) {
-        header('location:../connexion.php?succes=inscription');
+          
+        // Appel de la page de récapitulation 
+         include "./includes/popUp.php";
+
         die;
     } else {
         header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
         die;
     }
 } else {
+
     header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
 }

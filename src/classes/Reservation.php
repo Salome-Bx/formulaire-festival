@@ -17,7 +17,7 @@ class Reservation
     private $_idUser;
 
 
-    function __construct(int $nbrReservation, string $typeRerservation, array $nuit, int $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
+    function __construct(int $nbrReservation, string $typeRerservation, array $nuit, bool $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
 
 
     {

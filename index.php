@@ -29,7 +29,7 @@
 
             <h2>Réservation</h2>
             <h3>Nombre de réservation(s) :</h3>
-            <input type="number" name="nombrePlaces" id="NombrePlaces" required>
+            <input type="number" name="nombrePlaces" id="NombrePlaces" min="1" placeholder=" 1" required>
             <h3>Réservation(s) en tarif réduit</h3>
             <div>
                 <input type="checkbox" name="tarifReduit" id="tarifreduitRadio">
@@ -139,7 +139,7 @@
             <section class="casqueEnfant tarifHidden">
                 <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
                 <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
-                <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants">
+                <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" min="0">
                 <p>*Dans la limite des stocks disponibles.</p>
             </section>
 
@@ -147,7 +147,7 @@
 
             <div class="divluge">
                 <label for="NombreLugesEte">Nombre de descentes en luge d'été (5€/descentes) :</label>
-                <input type="number" name="NombreLugesEte" id="NombreLugesEte">
+                <input type="number" name="NombreLugesEte" id="NombreLugesEte" min="0">
             </div>
 
             <p class="bouton boutonOptions" onclick="suivant(blocOptions, blocCoordonnees)">Suivant</p>
@@ -160,21 +160,21 @@
             <div class="messageErreurChampsVides"></div>
 
             <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom">
-            <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" id="prenom">
-            <label for="email">Email :</label>
-            <input type="email" name="email" id="email">
+            <input type="text" name="nom" id="nom" placeholder="Dupont">
+            <label for=" prenom">Prénom :</label>
+            <input type="text" name="prenom" id="prenom" placeholder="Pierre">
+            <label for=" email">Email :</label>
+            <input type=" email" name="email" id="email" placeholder="email@gmail.com">
             <label for="telephone">Téléphone :</label>
-            <input type="text" name="telephone" id="telephone">
+            <input type=" text" name="telephone" id="telephone" placeholder="0612345678">
             <label for="adressePostale">Adresse Postale :</label>
-            <input type="text" name="adressePostale" id="adressePostale">
+            <input type="text" name="adressePostale" id="adressePostale" placeholder="4 rue Victor Hugo 38000 Grenoble">
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
 
         </div>
     </form>
-  
+
 </body>
 <script src="./assets/script.js"></script>
 <script src="./assets/traitement.js"></script>

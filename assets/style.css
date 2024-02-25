@@ -144,9 +144,19 @@ input[type="checkbox"] {
 }
 
 /*Page admin*/
+.displaynomnum {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 .displayflex {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.casques {
+  margin-left: 20% !important;
 }
 .reservation {
   background-color: #fff;
@@ -161,7 +171,13 @@ input[type="checkbox"] {
 .reservation p {
   margin: 8px;
 }
+.displaycoordonnee {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .prixPaye {
-  margin: 0 0 0 70%;
+  margin: 40px 0 0 85% !important;
   font-weight: 600;
+  font-size: 20px;
 }

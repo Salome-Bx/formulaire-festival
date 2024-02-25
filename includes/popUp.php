@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="./assets/responsive.css">
 
 </head>
@@ -33,23 +33,23 @@
             <li><?= $nom ?></li>
             <li><?= $prenom ?></li>
             <li><?= "Vous avez pris " . $nbrReservation . " réservations." ?></li>
-            <li> <?php if ('choixJour1') {
+            <li> <?php if ($typeRerservation == 'choixJour1') {
                         echo 'Vous avez réservé pour le 01/07';
-                    } else if ('choixJour2') {
+                    } else if ($typeRerservation == 'choixJour2') {
                         echo 'Vous avez réservé pour le 02/07';
-                    } else if ('choixJour3') {
+                    } else if ($typeRerservation == 'choixJour3') {
                         echo 'Vous avez réservé pour le 03/07';
-                    } else if ('choixJour12') {
+                    } else if ($typeRerservation == 'choixJour12') {
                         echo 'Vous avez réservé pour le 01/07 et le 02/07';
-                    } else if ('choixJour23') {
+                    } else if ($typeRerservation == 'choixJour23') {
                         echo 'Vous avez réservé pour le 02/07 et le 03/07';
-                    } else if ('pass3Jours') {
+                    } else if ($typeRerservation == 'pass3Jours') {
                         echo 'Vous avez réservé pour les trois jours.';
-                    } else if ('pass1Jourreduit') {
+                    } else if ($typeRerservation == 'pass1Jourreduit') {
                         echo 'Vous avez pris un jour en tarif réduit';
-                    } else if ('pass2joursruit') {
+                    } else if ($typeRerservation == 'pass2joursruit') {
                         echo 'Vous avez pris deux jours en tarif réduit';
-                    } else if ('pass3joursruit') {
+                    } else if ($typeRerservation == 'pass3joursruit') {
                         echo 'Vous avez pris trois jours en tarif réduit';
                     } ?></li>
             <li><?php

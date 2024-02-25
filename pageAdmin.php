@@ -52,49 +52,55 @@ require_once "src/classes/Database.php";
             $utilisateur = $DBU->getThisUtilisateurById($IdUser); ?>
 
             <div class="reservation <?= $reservation->getId() ?>">
-                <p><b><?= $utilisateur->getPrenom() ?> <?= $utilisateur->getNom() ?></b></p>
-                <p><?= $reservation->getNbrReservation() ?> réservations</p>
-                <p>Jour(s) choisi(s) :<?php if ($reservation->getTypeRerservation() == '1Journee0107') {
-                                            echo ' le 01/07';
-                                        } else if ($reservation->getTypeRerservation() == '1Journee0207') {
-                                            echo ' le 02/07';
-                                        } else if ($reservation->getTypeRerservation() == '1Journee0307') {
-                                            echo ' le 03/07';
-                                        } else if ($reservation->getTypeRerservation() == '2Journees01070207') {
-                                            echo ' le 01/07 et le 02/07';
-                                        } else if ($reservation->getTypeRerservation() == '2Journees02070307') {
-                                            echo ' le 02/07 et le 03/07';
-                                        } else if ($reservation->getTypeRerservation() == '3Journees') {
-                                            echo ' les trois jours.';
-                                        } else if ($reservation->getTypeRerservation() == '1JourneeReduit') {
-                                            echo ' un jour en tarif réduit';
-                                        } else if ($reservation->getTypeRerservation() == '2JourneesReduit') {
-                                            echo ' deux jours en tarif réduit';
-                                        } else if ($reservation->getTypeRerservation() == '3JourneesReduit') {
-                                            echo ' trois jours en tarif réduit';
-                                        } ?></p>
+                <div class="displaynomnum">
+                    <p class="fontsize"><b><?= $utilisateur->getPrenom() ?> <?= $utilisateur->getNom() ?></b></p>
+                    <p>Numéro de réservation : <?= $reservation->getId() ?></p>
+                </div>
+
+
+                <p>Nombre de réservation : <em><?= $reservation->getNbrReservation() ?></em></p>
+                <p>Jour(s) choisi(s) :<em><?php if ($reservation->getTypeRerservation() == '1Journee0107') {
+                                                echo ' le 01/07';
+                                            } else if ($reservation->getTypeRerservation() == '1Journee0207') {
+                                                echo ' le 02/07';
+                                            } else if ($reservation->getTypeRerservation() == '1Journee0307') {
+                                                echo ' le 03/07';
+                                            } else if ($reservation->getTypeRerservation() == '2Journees01070207') {
+                                                echo ' le 01/07 et le 02/07';
+                                            } else if ($reservation->getTypeRerservation() == '2Journees02070307') {
+                                                echo ' le 02/07 et le 03/07';
+                                            } else if ($reservation->getTypeRerservation() == '3Journees') {
+                                                echo ' les trois jours.';
+                                            } else if ($reservation->getTypeRerservation() == '1JourneeReduit') {
+                                                echo ' un jour en tarif réduit';
+                                            } else if ($reservation->getTypeRerservation() == '2JourneesReduit') {
+                                                echo ' deux jours en tarif réduit';
+                                            } else if ($reservation->getTypeRerservation() == '3JourneesReduit') {
+                                                echo ' trois jours en tarif réduit';
+                                            } ?></em></p>
                 <p>Nuit(s) : <?= $reservation->getNuit() ?> </p>
+
                 <?php if ($reservation->getNbrEnfant() == true) {
                 ?>
                     <div class="displayflex">
-                        <p>Enfant : Oui</p>
-                        <p>Casque antibruit : <?= $reservation->getNbrCasqueEnfant() ?></p>
+                        <p>Enfant : <em>Oui</em></p>
+                        <p class="casques">Casque(s) antibruit(s) : <em><?= $reservation->getNbrCasqueEnfant() ?></em></p>
                     </div>
                 <?php } else {
                 ?>
-                    <div class="displayflex">
-                        <p>Enfant : Non</p>
+                    <div>
+                        <p>Enfant : <em>Non</em></p>
                     </div>
                 <?php }
                 ?>
-                <p>Descente luge : <?= $reservation->getNbrDescenteLuge() ?></p>
-                <p><em>Coordonnées : </em></p>
-                <div class="displayflex">
-                    <p>Email : <?= $utilisateur->getMail() ?></p>
-                    <p>Téléphone : <?= $utilisateur->getTel() ?></p>
-                    <p>Adresse : <?= $utilisateur->getAdresse() ?></p>
+                <p>Descente(s) luge : <em><?= $reservation->getNbrDescenteLuge() ?></em></p>
+                <p>Coordonnées : </p>
+                <div class="displaycoordonnee">
+                    <p>Email : <em><?= $utilisateur->getMail() ?></em></p>
+                    <p>Téléphone : <em><?= $utilisateur->getTel() ?></em></p>
+                    <p>Adresse : <em><?= $utilisateur->getAdresse() ?></em></p>
                 </div>
-                <p class="prixPaye"> Total :
+                <p class="prixPaye fontsize"> Total :
                     <?= $reservation->calculerPrix() ?> €
                 </p>
 

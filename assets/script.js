@@ -2,7 +2,7 @@
 // récupération des 3 blocs du formulaire
 let blocReservation = document.querySelector("#reservation");
 
-let blocOptions = document.querySelector('#options');
+let blocOptions = document.querySelector("#options");
 
 blocOptions.classList.add("hidden");
 
@@ -112,45 +112,51 @@ choixJour23.addEventListener("change", () => {
 let tenteNuit1 = document.querySelector("#tenteNuit1");
 let tenteNuit2 = document.querySelector("#tenteNuit2");
 let tenteNuit3 = document.querySelector("#tenteNuit3");
-let tente3Nuits = document.querySelector("#tente3Nuits");
+let tenteTroisNuits = document.querySelector("#tente3Nuits");
 
 let vanNuit1 = document.querySelector("#vanNuit1");
 let vanNuit2 = document.querySelector("#vanNuit2");
 let vanNuit3 = document.querySelector("#vanNuit3");
-let van3Nuits = document.querySelector("#van3Nuits");
+let vanTroisNuits = document.querySelector("#van3Nuits");
 
 let enfantsOui = document.querySelector("input[name=enfantsOui]");
 let enfantsNon = document.querySelector("input[name=enfantsNon]");
 let casqueEnfant = document.querySelector(".casqueEnfant");
 
 tenteNuit1.addEventListener("change", () => {
-  decocher(tenteNuit1, tente3Nuits);
+  decocher(tenteNuit1, tenteTroisNuits);
+  decocher3nuit("tente");
 });
 tenteNuit2.addEventListener("change", () => {
-  decocher(tenteNuit2, tente3Nuits);
+  decocher(tenteNuit2, tenteTroisNuits);
+  decocher3nuit("tente");
 });
 tenteNuit3.addEventListener("change", () => {
-  decocher(tenteNuit3, tente3Nuits);
+  decocher(tenteNuit3, tenteTroisNuits);
+  decocher3nuit("tente");
 });
-tente3Nuits.addEventListener("change", () => {
-  decocher(tente3Nuits, tenteNuit1);
-  decocher(tente3Nuits, tenteNuit2);
-  decocher(tente3Nuits, tenteNuit3);
+tenteTroisNuits.addEventListener("change", () => {
+  decocher(tenteTroisNuits, tenteNuit1);
+  decocher(tenteTroisNuits, tenteNuit2);
+  decocher(tenteTroisNuits, tenteNuit3);
 });
 
 vanNuit1.addEventListener("change", () => {
-  decocher(vanNuit1, van3Nuits);
+  decocher(vanNuit1, vanTroisNuits);
+  decocher3nuit("van");
 });
 vanNuit2.addEventListener("change", () => {
-  decocher(vanNuit2, van3Nuits);
+  decocher(vanNuit2, vanTroisNuits);
+  decocher3nuit("van");
 });
 vanNuit3.addEventListener("change", () => {
-  decocher(vanNuit3, van3Nuits);
+  decocher(vanNuit3, vanTroisNuits);
+  decocher3nuit("van");
 });
-van3Nuits.addEventListener("change", () => {
-  decocher(van3Nuits, vanNuit1);
-  decocher(van3Nuits, vanNuit2);
-  decocher(van3Nuits, vanNuit3);
+vanTroisNuits.addEventListener("change", () => {
+  decocher(vanTroisNuits, vanNuit1);
+  decocher(vanTroisNuits, vanNuit2);
+  decocher(vanTroisNuits, vanNuit3);
 });
 
 enfantsOui.addEventListener("change", () => {
@@ -177,6 +183,33 @@ enfantsNon.addEventListener("change", () => {
 function decocher(boutoncoche, boutonadechoche) {
   if (boutoncoche.checked === true) {
     boutonadechoche.checked = false;
+  }
+}
+
+function decocher3nuit(tenteouvan) {
+  if (tenteouvan === "tente") {
+    if (
+      tenteNuit1.checked === true &&
+      tenteNuit2.checked === true &&
+      tenteNuit3.checked === true
+    ) {
+      tenteNuit1.checked = false;
+      tenteNuit2.checked = false;
+      tenteNuit3.checked = false;
+      tenteTroisNuits.checked = true;
+    }
+  }
+  if (tenteouvan === "van") {
+    if (
+      vanNuit1.checked === true &&
+      vanNuit2.checked === true &&
+      vanNuit3.checked === true
+    ) {
+      vanNuit1.checked = false;
+      vanNuit2.checked = false;
+      vanNuit3.checked = false;
+      vanTroisNuits.checked = true;
+    }
   }
 }
 

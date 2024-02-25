@@ -24,17 +24,6 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         header('location:../index.php?erreur=' . ERREUR_EMAIL);
     }
 
-
-    // if ($_POST['password'] === $_POST['password2']) {
-    //     if (strlen($_POST['password']) >= 8) {
-    //         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    //     } else {
-    //         header('location:../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
-    //     }
-    // }else {
-    //     header('location:../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
-    // }
-
     $tel = $_POST['telephone'];
     $adresse = $_POST['adressePostale'];
 
@@ -54,9 +43,9 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         $typeRerservation = '2Journees01070207';
     } else if (isset($_POST['choixJour23'])) {
         $typeRerservation = '2Journees02070307';
-    } else if (isset($_POST['pass3Jours'])) {
+    } else if (isset($_POST['pass3jours'])) {
         $typeRerservation = '3Journees';
-    } else if (isset($_POST['pass1Jourreduit'])) {
+    } else if (isset($_POST['pass1jourreduit'])) {
         $typeRerservation = '1JourneeReduit';
     } else if (isset($_POST['pass2joursreduit'])) {
         $typeRerservation = '2JourneesReduit';
@@ -93,7 +82,6 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     }
 
     var_dump($nuit);
-
 
 
     if (isset($_POST['enfantsOui'])) {

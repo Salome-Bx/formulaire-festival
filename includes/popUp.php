@@ -33,23 +33,23 @@
             <li><?= $nom ?></li>
             <li><?= $prenom ?></li>
             <li><?= "Vous avez pris " . $nbrReservation . " réservations." ?></li>
-            <li> <?php if ($typeRerservation == 'choixJour1') {
+            <li> <?php if ($typeRerservation == '1Journee0107') {
                         echo 'Vous avez réservé pour le 01/07';
-                    } else if ($typeRerservation == 'choixJour2') {
+                    } else if ($typeRerservation == '1Journee0207') {
                         echo 'Vous avez réservé pour le 02/07';
-                    } else if ($typeRerservation == 'choixJour3') {
+                    } else if ($typeRerservation == '1Journee0307') {
                         echo 'Vous avez réservé pour le 03/07';
-                    } else if ($typeRerservation == 'choixJour12') {
+                    } else if ($typeRerservation == '2Journees01070207') {
                         echo 'Vous avez réservé pour le 01/07 et le 02/07';
-                    } else if ($typeRerservation == 'choixJour23') {
+                    } else if ($typeRerservation == '2Journees02070307') {
                         echo 'Vous avez réservé pour le 02/07 et le 03/07';
-                    } else if ($typeRerservation == 'pass3Jours') {
+                    } else if ($typeRerservation == '3Journees') {
                         echo 'Vous avez réservé pour les trois jours.';
-                    } else if ($typeRerservation == 'pass1Jourreduit') {
+                    } else if ($typeRerservation == '1JourneeReduit') {
                         echo 'Vous avez pris un jour en tarif réduit';
-                    } else if ($typeRerservation == 'pass2joursruit') {
+                    } else if ($typeRerservation == '2JourneesReduit') {
                         echo 'Vous avez pris deux jours en tarif réduit';
-                    } else if ($typeRerservation == 'pass3joursruit') {
+                    } else if ($typeRerservation == '3JourneesReduit') {
                         echo 'Vous avez pris trois jours en tarif réduit';
                     } ?></li>
             <li><?php
@@ -84,7 +84,6 @@
                     echo $message;
                 }
 
-
                 ?></li>
 
             <li><?php
@@ -92,9 +91,10 @@
                     echo "Vous avez indiqué venir avec un ou des enfants, et réservé " . $nbrCasqueEnfant . " casque(s).";
                 }
                 ?></li>
-            <li><?php
-                if (!empty($nbrDescenteLuge))
-                    echo "Vous avez choisi de faire " . $nbrDescenteLuge . " descente(s) de luge."; ?></li>
+            <?php
+            if (!empty($nbrDescenteLuge)) {
+            ?> <li> <?= "Vous avez choisi de faire " . $nbrDescenteLuge . " descente(s) de luge."; ?></li>
+            <?php } ?>
         </ul>
 
 

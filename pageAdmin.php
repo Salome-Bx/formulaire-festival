@@ -49,29 +49,55 @@ require_once "src/classes/Database.php";
             $IdUser = $reservation->getIdUser();
 
             $DBU = new Database('User');
-            $utilisateur = $DBU->getIDUtilisateurs(); ?>
+            $utilisateur = $DBU->getThisUtilisateurById($IdUser); ?>
 
             <div class="reservation <?= $reservation->getId() ?>">
-                <p><b><?= $utilisateur->getPrenom() ?><?= $utilisateur->getNom() ?></b></p>
+                <p><b><?= $utilisateur->getPrenom() ?> <?= $utilisateur->getNom() ?></b></p>
                 <p><?= $reservation->getNbrReservation() ?> réservations</p>
-                <p>Jour(s) choisi(s) : <?= $reservation->getTypeRerservation() ?></p>
+                <p>Jour(s) choisi(s) :<?php if ($reservation->getTypeRerservation() == '1Journee0107') {
+                                            echo ' le 01/07';
+                                        } else if ($reservation->getTypeRerservation() == '1Journee0207') {
+                                            echo ' le 02/07';
+                                        } else if ($reservation->getTypeRerservation() == '1Journee0307') {
+                                            echo ' le 03/07';
+                                        } else if ($reservation->getTypeRerservation() == '2Journees01070207') {
+                                            echo ' le 01/07 et le 02/07';
+                                        } else if ($reservation->getTypeRerservation() == '2Journees02070307') {
+                                            echo ' le 02/07 et le 03/07';
+                                        } else if ($reservation->getTypeRerservation() == '3Journees') {
+                                            echo ' les trois jours.';
+                                        } else if ($reservation->getTypeRerservation() == '1JourneeReduit') {
+                                            echo ' un jour en tarif réduit';
+                                        } else if ($reservation->getTypeRerservation() == '2JourneesReduit') {
+                                            echo ' deux jours en tarif réduit';
+                                        } else if ($reservation->getTypeRerservation() == '3JourneesReduit') {
+                                            echo ' trois jours en tarif réduit';
+                                        } ?></p>
                 <p>Nuit(s) : <?= $reservation->getNuit() ?> </p>
-                <div class="displayflex">
-                    <p>Enfant : <?= $reservation->getNbrEnfant() ?></p>
-                    <p>Casque antibruit : <?= $reservation->getNbrCasqueEnfant() ?></p>
-                </div>
+                <?php if ($reservation->getNbrEnfant() == true) {
+                ?>
+                    <div class="displayflex">
+                        <p>Enfant : Oui</p>
+                        <p>Casque antibruit : <?= $reservation->getNbrCasqueEnfant() ?></p>
+                    </div>
+                <?php } else {
+                ?>
+                    <div class="displayflex">
+                        <p>Enfant : Non</p>
+                    </div>
+                <?php }
+                ?>
                 <p>Descente luge : <?= $reservation->getNbrDescenteLuge() ?></p>
                 <p><em>Coordonnées : </em></p>
                 <div class="displayflex">
                     <p>Email : <?= $utilisateur->getMail() ?></p>
                     <p>Téléphone : <?= $utilisateur->getTel() ?></p>
-                    <p>Adresse : <?= $utilisateur->getAdressePostale() ?></p>
+                    <p>Adresse : <?= $utilisateur->getAdresse() ?></p>
                 </div>
-                <p class="prixPaye">
-                    <?= $reservation->calculerPrix() ?>
+                <p class="prixPaye"> Total :
+                    <?= $reservation->calculerPrix() ?> €
                 </p>
 
-                //En gros là on créer une boucle pour récupérer chaque résa et on récupére l'id user correspondant et suivant l'id qu'on récupére, on récupére le user avec un getuserbyid.
 
             </div>
         <?php } ?>

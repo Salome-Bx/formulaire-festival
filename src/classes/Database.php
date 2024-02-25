@@ -1,40 +1,42 @@
-<?php 
+<?php
 
-class Database {
+class Database
+{
 
-  private $_DBU;
-  private $_DBR;
+    private $_DBU;
+    private $_DBR;
 
 
-/**
- * Fonction qui permet d'attribuer la bonne Database
- *
- * @param   nomClasse    prends en paramètre la classe souhaitée
- *
- * @return  [type]       attribut le dossier csv correspondant
- */
-    public function __construct($nomClasse){
+    /**
+     * Fonction qui permet d'attribuer la bonne Database
+     *
+     * @param   nomClasse    prends en paramètre la classe souhaitée
+     *
+     * @return  [type]       attribut le dossier csv correspondant
+     */
+    public function __construct($nomClasse)
+    {
         if ($nomClasse == "User") {
             $this->_DBU = __DIR__ . "/../csv/utilisateurs.csv";
         } else if ($nomClasse == "Reservation") {
             $this->_DBR = __DIR__ . "/../csv/reservations.csv";
         }
-            
     }
 
-   /********** DataBaseUtilisateur **********/
+    /********** DataBaseUtilisateur **********/
 
     /**
      * Fonction qui récupère tous les utilisateurs du csv 
      *
      * @return  array   retourne un tableau avec tous les utilisateurs, 1 par ligne
      */
-    public function getAllUtilisateurs(): array {
+    public function getAllUtilisateurs(): array
+    {
         $connexion = fopen($this->_DBU, 'r');
         $utiliseurs = [];
 
         while (($user = fgetcsv($connexion, 1000, ",")) !== FALSE) {
-        $utiliseurs[] = new User($user[1],$user[2],$user[3],$user[4],$user[5], $user[0]);
+            $utiliseurs[] = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]);
         }
 
         fclose($connexion);
@@ -49,15 +51,16 @@ class Database {
      *
      * @return  User       retourne les infos utilisateur s'il y a un ID en nombre, sinon $user = false
      */
-    public function getThisUtilisateurById(int $id) : User|bool {
+    public function getThisUtilisateurById(int $id): User|bool
+    {
         $connexion = fopen($this->_DBU, 'r');
         while (($user = fgetcsv($connexion, 1000)) !== FALSE) {
-        if ((int) $user[0] === $id) {
-            $user = new User( $user[1],$user[2],$user[3],$user[4],$user[5], $user[0]);
-            break;
-        }else {
-            $user = false;
-        }
+            if ((int) $user[0] === $id) {
+                $user = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]);
+                break;
+            } else {
+                $user = false;
+            }
         }
         fclose($connexion);
         return $user;
@@ -71,65 +74,11 @@ class Database {
      *
      * @return  bool         [return description]
      */
-        public function saveUtilisateur(User $user) : bool {
-            $connexion = fopen($this->_DBU, 'ab');
+    public function saveUtilisateur(User $user): bool
+    {
+        $connexion = fopen($this->_DBU, 'ab');
 
-            $retour = fputcsv($connexion, $user->getObjectToArray()); //Formate une ligne en CSV et l'écrit dans un fichier
-
-            fclose($connexion);
-
-            return $retour;
-        }
-
-
-
-
-    /********** DataBaseReservation **********/
-
-/**
- * [getAllReservations description]
- *
- * @return  array   [return description]
- */
-    public function getAllReservations(): array {
-        $connexion = fopen($this->_DBR, 'r');
-        $reservations = [];
-
-        while (($reservation = fgetcsv($connexion, 1000, ",")) !== FALSE) {
-            $reservations[] = new Reservation($reservation[0], $reservation[1],$reservation[2],$reservation[3],$reservation[4],$reservation[5],$reservation[6], $reservation[7], $reservation[8],$reservation[9],$reservation[10],$reservation[11],$reservation[12]);
-        }
-
-        fclose($connexion);
-
-        return $reservations;
-    }
-
-
-    public function getThisReservationById(int $id) : Reservation|bool {
-        $connexion = fopen($this->_DBR, 'r');
-        while (($reservation = fgetcsv($connexion, 1000)) !== FALSE) {
-        if ((int) $reservation[0] === $id) {
-            $reservation = new Reservation($reservation[0], $reservation[1],$reservation[2],$reservation[3],$reservation[4],$reservation[5],$reservation[6], $reservation[7],$reservation[8],$reservation[9],$reservation[10],$reservation[11],$reservation[12]);
-            break;
-        }else {
-            $reservation = false;
-        }
-        }
-        fclose($connexion);
-        return $reservation;
-    }
-
-/**
- * Function qui fait appel à la méthode getObjectToArray() pour créer un csv avec les infos utilisateur
- *
- * @param   Reservation  $reservation  classe Reservation
- *
- * @return  bool                       [return description]
- */
-    public function saveReservation(Reservation $reservation) : bool {
-        $connexion = fopen($this->_DBR, 'ab');
-
-        $retour = fputcsv($connexion, $reservation->getObjectToArray());
+        $retour = fputcsv($connexion, $user->getObjectToArray()); //Formate une ligne en CSV et l'écrit dans un fichier
 
         fclose($connexion);
 
@@ -139,9 +88,60 @@ class Database {
 
 
 
+    /********** DataBaseReservation **********/
+
+    /**
+     * [getAllReservations description]
+     *
+     * @return  array   [return description]
+     */
+    public function getAllReservations(): array
+    {
+        $connexion = fopen($this->_DBR, 'r');
+        $reservations = [];
+
+        while (($reservation = fgetcsv($connexion, 1000, ",")) !== FALSE) {
+            $reservations[] = new Reservation($reservation[2], $reservation[3], $reservation[4], $reservation[5], $reservation[6], $reservation[7], $reservation[1], $reservation[0]);
+        }
+
+        fclose($connexion);
+
+        return $reservations;
+    }
 
 
+    public function getThisReservationById(int $id): Reservation|bool
+    {
+        $connexion = fopen($this->_DBR, 'r');
+        while (($reservation = fgetcsv($connexion, 1000)) !== FALSE) {
+            if ((int) $reservation[0] === $id) {
+                $reservation = new Reservation($reservation[2], $reservation[3], $reservation[4], $reservation[5], $reservation[6], $reservation[7], $reservation[1], $reservation[0]);
+                break;
+            } else {
+                $reservation = false;
+            }
+        }
+        fclose($connexion);
+        return $reservation;
+    }
 
+    /**
+     * Function qui fait appel à la méthode getObjectToArray() pour créer un csv avec les infos utilisateur
+     *
+     * @param   Reservation  $reservation  classe Reservation
+     *
+     * @return  bool                       [return description]
+     */
+    public function saveReservation(Reservation $reservation): bool
+    {
+        $connexion = fopen($this->_DBR, 'ab');
+
+        $retour = fputcsv($connexion, $reservation->getObjectToArray());
+
+        fclose($connexion);
+
+        return $retour;
+    }
 }
 
 

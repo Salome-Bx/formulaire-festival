@@ -181,15 +181,28 @@ class Reservation
 
     private function CreerNouvelId()
     {
-        $Database = new Database("User");
-        $utilisateurs = $Database->getAllUtilisateurs();
+        $Database = new Database("Reservation");
+
+        $reservations = $Database->getAllReservations();
 
         // On crée un tableau dans lequel on stockera tous les ids existants.
         $IDs = [];
 
-        foreach ($utilisateurs as $utilisateur) {
-            $IDs[] = $utilisateur->getId();
+        foreach ($reservations as $reservation) {
+            $IDs[] = $reservation->getId();
         }
+
+        // Ensuite, on regarde si un chiffre existe dans le tableau, et si non, on l'incrémente
+        $i = 1;
+        $unique = false;
+        while ($unique === false) {
+            if (in_array($i, $IDs)) {
+                $i++;
+            } else {
+                $unique = true;
+            }
+        }
+        return $i;
     }
 
     ////////////Nos fonctions////////////
@@ -203,13 +216,15 @@ class Reservation
     public function getObjectToArray(): array
     {
         return [
+            "id" => $this->getId(),
+            "idUser" => $this->getIdUser(),
             "NbrReservation" => $this->getNbrReservation(),
             "TypeRerservation" => $this->getTypeRerservation(),
             "Nuit" => $this->getNuit(),
             "NbrEnfant" => $this->getNbrEnfant(),
             "NbrCasqueEnfant" => $this->getNbrCasqueEnfant(),
             "NbrDescenteLuge" => $this->getNbrDescenteLuge(),
-            "PrixTotal" => $this->calculerPrix(),
+            // "PrixTotal" => $this->calculerPrix(),
         ];
     }
 }

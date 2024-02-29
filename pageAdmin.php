@@ -78,7 +78,28 @@ require_once "src/classes/Database.php";
                                             } else if ($reservation->getTypeRerservation() == '3JourneesReduit') {
                                                 echo ' trois jours en tarif réduit';
                                             } ?></em></p>
-                <p>Nuit(s) : <?= $reservation->getNuit() ?> </p>
+                <p>Nuit(s) : <em><?php
+                                    $tableauNuitAdmin = str_split($reservation->getNuit());
+                                    foreach ($tableauNuitAdmin as $indiceTableauNuit) {
+                                        if ($indiceTableauNuit == 'a') {
+                                            echo ' la nuit en tente du 01/07 <br>';
+                                        } else if ($indiceTableauNuit == 'b') {
+                                            echo ' la nuit en tente du 02/07 <br>';
+                                        } else if ($indiceTableauNuit == 'c') {
+                                            echo ' la nuit en tente du 03/07 <br>';
+                                        } else if ($indiceTableauNuit == 'd') {
+                                            echo ' les trois nuits en tente <br>';
+                                        } else if ($indiceTableauNuit == 'e') {
+                                            echo ' la nuit en van du 01/07 <br>';
+                                        } else if ($indiceTableauNuit == 'f') {
+                                            echo ' la nuit en van du 02/07 <br>';
+                                        } else if ($indiceTableauNuit == 'g') {
+                                            echo ' la nuit en van du 03/07 <br>';
+                                        } else if ($indiceTableauNuit == 'h') {
+                                            echo ' les trois nuits en van <br>';
+                                        };
+                                    } ?></em></p>
+
 
                 <?php if ($reservation->getNbrEnfant() == true) {
                 ?>
@@ -106,5 +127,6 @@ require_once "src/classes/Database.php";
 
 
             </div>
-        <?php } ?>
+        <?php }
+        ?>
     </section>

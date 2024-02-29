@@ -54,30 +54,31 @@
                     } ?></li>
             <li><?php
                 $message = "";
-                foreach ($nuit as $indiceTableau) {
+                $tableauNuitPopUp = str_split($nuit);
+                foreach ($tableauNuitPopUp as $indiceTableau) {
                     switch ($indiceTableau) {
-                        case "nuit0107Tente":
+                        case "a":
                             $message .= "Vous avez réservé une nuit en tente le 01/07.";
                             break;
-                        case "nuit0207Tente":
+                        case "b":
                             $message .= "Vous avez réservé une nuit en tente le 02/07.";
                             break;
-                        case "nuit0307Tente":
+                        case "c":
                             $message .= "Vous avez réservé une nuit en tente le 03/07.";
                             break;
-                        case "3nuitTente":
+                        case "d":
                             $message .= "Vous avez réservé les trois nuits en tente.";
                             break;
-                        case "nuit0107Van":
+                        case "e":
                             $message .= "Vous avez réservé une nuit en van le 01/07.";
                             break;
-                        case "nuit0207Van":
+                        case "f":
                             $message .= "Vous avez réservé une nuit en van le 02/07.";
                             break;
-                        case "nuit0307Van":
+                        case "g":
                             $message .= "Vous avez réservé une nuit en van le 03/07.";
                             break;
-                        case "3nuitVan":
+                        case "h":
                             $message .= "Vous avez réservé les trois nuits en van.";
                             break;
                     }

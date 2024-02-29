@@ -17,7 +17,7 @@ class Reservation
     private $_idUser;
 
 
-    function __construct(int $nbrReservation, string $typeRerservation, array $nuit, bool $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
+    function __construct(int $nbrReservation, string $typeRerservation, string $nuit, bool $nbrEnfant, int $nbrCasqueEnfant, int $nbrDescenteLuge, $idUser, int|string $id = "à créer")
 
 
     {
@@ -96,11 +96,11 @@ class Reservation
         return $this->_prixTotalReservation = $prix * $this->getNbrReservation();
     }
 
-    public function getNuit(): array
+    public function getNuit(): string
     {
         return $this->_nuit;
     }
-    public function setNuit(array $nuit): void
+    public function setNuit(string $nuit): void
     {
         $this->_nuit = $nuit;
     }
@@ -110,14 +110,16 @@ class Reservation
         return $this->_prixTotalNuit;
     }
 
-    public function setPrixTotalNuit(array $nuit): int
+    public function setPrixTotalNuit(string $nuit): int
     {
         $prix = 0;
-        foreach ($nuit as $checkNuit) {
+        $tableauNuit = str_split($nuit);
 
-            if ($checkNuit == "nuit0107Tente" || "nuit0207Tente" || "nuit0307Tente" || "nuit0107Van" || "nuit0207Van" || "nuit0307Van") {
+        foreach ($tableauNuit as $checkNuit) {
+
+            if ($checkNuit == "a" || "b" || "c" || "e" || "f" || "g") {
                 $prix += 5;
-            } else if ($checkNuit == "3nuitTente" || "3nuitVan") {
+            } else if ($checkNuit == "d" || "h") {
                 $prix += 12;
             }
         }

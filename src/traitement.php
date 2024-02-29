@@ -10,7 +10,7 @@ require_once "./config.php";
 
 
 
-if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['email']) && isset($_POST['telephone']) && isset($_POST['adressePostale']) && !empty($_POST['nombrePlaces']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['adressePostale'])) {
+if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['email']) && isset($_POST['telephone']) && isset($_POST['adressePostale']) && isset($_POST['password']) && isset($_POST['passwordBis'])  && !empty($_POST['nombrePlaces']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['adressePostale']) && !empty($_POST['password']) && !empty($_POST['passwordBis'])) {
 
     $databaseUser = new Database("User");
     $databaseReservation = new Database("Reservation");
@@ -24,12 +24,24 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         header('location:../index.php?erreur=' . ERREUR_EMAIL);
     }
 
-    $tel = $_POST['telephone'];
-    $adresse = $_POST['adressePostale'];
+    $tel = htmlspecialchars($_POST['telephone']);
+    $adresse = htmlspecialchars($_POST['adressePostale']);
+
 
     $user = new User($nom, $prenom, $mail, $tel, $adresse);
 
     $retourUser = $databaseUser->saveUtilisateur($user);
+
+
+    if ($_POST["password"] == $_POST["passwordBis"]) {
+        $mdp = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $mdpBis = password_hash($_POST["passwordBis"], PASSWORD_DEFAULT);
+    } else {
+        header('location:../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
+    }
+
+
+
 
 
 
@@ -55,33 +67,32 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
     // Création d'un tableau avec la méthode POST pour récupérer le type de nuit choisis
     $nbrReservation = htmlspecialchars($_POST['nombrePlaces']);
-    $nuit = [];
+    $nuit = "";
     if (isset($_POST['tenteNuit1'])) {
-        array_push($nuit, 'nuit0107Tente ');
+        $nuit .= 'a';
     }
     if (isset($_POST['tenteNuit2'])) {
-        array_push($nuit, 'nuit0207Tente ');
+        $nuit .= 'b';
     }
     if (isset($_POST['tenteNuit3'])) {
-        array_push($nuit, 'nuit0307Tente');
+        $nuit .= 'c';
     }
     if (isset($_POST['tente3Nuits'])) {
-        array_push($nuit, '3nuitTente');
+        $nuit .= 'd';
     }
     if (isset($_POST['vanNuit1'])) {
-        array_push($nuit, 'nuit0107Van');
+        $nuit .= 'e';
     }
     if (isset($_POST['vanNuit2'])) {
-        array_push($nuit, 'nuit0207Van');
+        $nuit .= 'f';
     }
     if (isset($_POST['vanNuit3'])) {
-        array_push($nuit, 'nuit0307Van');
+        $nuit .= 'g';
     }
     if (isset($_POST['van3Nuits'])) {
-        array_push($nuit, '3nuitVan');
+        $nuit .= 'h';
     }
 
-    var_dump($nuit);
 
 
     if (isset($_POST['enfantsOui'])) {

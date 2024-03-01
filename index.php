@@ -29,7 +29,7 @@
 
             <h2>Réservation</h2>
             <h3>Nombre de réservation(s) :</h3>
-            <input type="number" name="nombrePlaces" id="NombrePlaces" min="1" placeholder=" 1" required>
+            <input type="number" name="nombrePlaces" id="NombrePlaces" min="1" required>
             <h3>Réservation(s) en tarif réduit</h3>
             <div>
                 <input type="checkbox" name="tarifReduit" id="tarifreduitRadio">
@@ -85,6 +85,7 @@
             <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
             <p class="bouton boutonReservation" onclick="suivant(blocReservation, blocOptions)">Suivant</p>
+            <div class="messageErreurReservation"></div>
 
         </div>
         <div id="options" class="blocFormulaire options">
@@ -141,6 +142,7 @@
                 <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
                 <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" min="0">
                 <p>*Dans la limite des stocks disponibles.</p>
+                <div class="messageErreurCasques"></div>
             </section>
 
             <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
@@ -148,9 +150,10 @@
             <div class="divluge">
                 <label for="NombreLugesEte">Nombre de descentes en luge d'été (5€/descentes) :</label>
                 <input type="number" name="NombreLugesEte" id="NombreLugesEte" min="0">
+                <div class="messageErreurLuge"></div>
             </div>
 
-            <p class="bouton boutonOptions" onclick="suivant(blocOptions, blocCoordonnees)">Suivant</p>
+            <p class="bouton boutonOptions" onclick="suivant2(blocOptions, blocCoordonnees)">Suivant</p>
 
         </div>
 

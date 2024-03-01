@@ -36,7 +36,7 @@ class Database
         $utiliseurs = [];
 
         while (($user = fgetcsv($connexion, 1000, ",")) !== FALSE) {
-            $utiliseurs[] = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]);
+            $utiliseurs[] = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]); //Mettre $user[6]
         }
 
         fclose($connexion);
@@ -56,7 +56,22 @@ class Database
         $connexion = fopen($this->_DBU, 'r');
         while (($user = fgetcsv($connexion, 1000)) !== FALSE) {
             if ((int) $user[0] === $id) {
-                $user = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]);
+                $user = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]); //Mettre $user[6]
+                break;
+            } else {
+                $user = false;
+            }
+        }
+        fclose($connexion);
+        return $user;
+    }
+
+    public function getThisUtilisateurByEmail(string $email): User|bool
+    {
+        $connexion = fopen($this->_DBU, 'r');
+        while (($user = fgetcsv($connexion, 1000)) !== FALSE) {
+            if ((string) $user[3] === $email) {
+                $user = new User($user[1], $user[2], $user[3], $user[4], $user[5], $user[0]); //Mettre $user[6]
                 break;
             } else {
                 $user = false;

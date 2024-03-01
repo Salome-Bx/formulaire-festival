@@ -9,7 +9,7 @@ class User
   private $_tel;
   private $_adresse;
   // private $_password;
-  
+
 
 
   /**
@@ -21,7 +21,8 @@ class User
    * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
    */
 
-  function __construct(string $nom, string $prenom, string $mail, int $tel, string $adresse, int|string $id = "à créer"){
+  function __construct(string $nom, string $prenom, string $mail, int $tel, string $adresse, int|string $id = "à créer")
+  {
 
     $this->setId($id);
     $this->setNom($nom);
@@ -31,7 +32,7 @@ class User
     $this->setTel($tel);
     $this->setAdresse($adresse);
     // $this->setPassword($password);
-    
+
 
   }
 
@@ -72,17 +73,21 @@ class User
     $this->_mail = $mail;
   }
 
-  public function getTel(): int {
+  public function getTel(): int
+  {
     return $this->_tel;
   }
-  public function setTel(int $tel) {
+  public function setTel(int $tel)
+  {
     $this->_tel = $tel;
   }
 
-  public function getAdresse(): string {
+  public function getAdresse(): string
+  {
     return $this->_adresse;
   }
-  public function setAdresse(string $adresse): void {
+  public function setAdresse(string $adresse): void
+  {
     $this->_adresse = $adresse;
   }
 
@@ -94,7 +99,8 @@ class User
   // }
 
 
-  private function CreerNouvelId(){
+  private function CreerNouvelId()
+  {
     $Database = new Database("User");
 
     $utilisateurs = $Database->getAllUtilisateurs();
@@ -129,7 +135,6 @@ class User
       "tel" => $this->getTel(),
       "adresse" => $this->getAdresse()
       // "password" => $this->getPassword()
-     
 
     ];
   }

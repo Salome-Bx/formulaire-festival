@@ -24,6 +24,7 @@
 
 
     <header class="header">
+        <a href="../connexion.php" class="boutonConnexion">Connexion</a>
         <h1>Résumé de votre commande</h1>
     </header>
 
@@ -32,6 +33,10 @@
             <!-- $typeRerservation, $nuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $idUser -->
             <li><?= $nom ?></li>
             <li><?= $prenom ?></li>
+
+            <!-- Alternative pour ne pas avoir les puces -->
+            <!-- <p><b> <?=// $prenom ?> <?= //$nom ?></b></p> -->
+
             <li><?= "Vous avez pris " . $nbrReservation . " réservations." ?></li>
             <li> <?php if ($typeRerservation == '1Journee0107') {
                         echo 'Vous avez réservé pour le 01/07';
@@ -87,11 +92,13 @@
 
                 ?></li>
 
-            <li><?php
-                if ($nbrEnfant == TRUE) {
-                    echo "Vous avez indiqué venir avec un ou des enfants, et réservé " . $nbrCasqueEnfant . " casque(s).";
-                }
-                ?></li>
+            <?php
+            if ($nbrEnfant == TRUE) { ?>
+                <li>
+                    Vous avez indiqué venir avec un ou des enfants, et réservé <?= $nbrCasqueEnfant ?> casque(s).</li>
+            <?php
+            }
+            ?>
             <?php
             if (!empty($nbrDescenteLuge)) {
             ?> <li> <?= "Vous avez choisi de faire " . $nbrDescenteLuge . " descente(s) de luge."; ?></li>

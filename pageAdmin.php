@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['connecté'])) {
+if (!isset($_SESSION['connectéUser'])) {
     header('location: connexion.php');
     die;
 }

@@ -9,9 +9,71 @@ blocOptions.classList.add("hidden");
 let blocCoordonnees = document.querySelector("#coordonnees");
 blocCoordonnees.classList.add("hidden");
 
+let boutonReservation = document.querySelector(".boutonReservation");
+let NombrePlaces = document.querySelector("#NombrePlaces");
+
+let choixJour1 = document.querySelector("#choixJour1");
+let choixJour2 = document.querySelector("#choixJour2");
+let choixJour3 = document.querySelector("#choixJour3");
+
+let choixJour12 = document.querySelector("#choixJour12");
+let choixJour23 = document.querySelector("#choixJour23");
+
+let pass3Jour = document.querySelector("#pass3jours");
+let pass1jourreduit = document.querySelector("#pass1jourreduit");
+let pass2joursreduit = document.querySelector("#pass2joursreduit");
+let pass3joursreduit = document.querySelector("#pass3joursreduit");
+
+/**
+ * [Passer de la page Réservation à la page Option si le nombre de réservation est rentré et si une formule est cochée]
+ *
+ * @param   {[string]}  blocACacher    [Bloc A Cacher ]
+ * @param   {[string]}  blocAAfficher  [Bloc A Afficher ]
+ *
+ */
 function suivant(blocACacher, blocAAfficher) {
-  blocACacher.classList.add("hidden");
-  blocAAfficher.classList.remove("hidden");
+  if (NombrePlaces.value > 0) {
+    if (
+      choixJour1.checked === true ||
+      choixJour2.checked === true ||
+      choixJour3.checked === true ||
+      choixJour12.checked === true ||
+      choixJour23.checked === true ||
+      pass3jours.checked === true ||
+      pass1jourreduit.checked === true ||
+      pass2joursreduit.checked === true ||
+      pass3joursreduit.checked === true
+    ) {
+      blocACacher.classList.add("hidden");
+      blocAAfficher.classList.remove("hidden");
+    } else {
+      //Message erreur jour choisi
+      document.querySelector(".messageErreurReservation").innerText =
+        "Merci de choisir une formule";
+    }
+  } else {
+    // Message erreur réservation
+    document.querySelector(".messageErreurReservation").innerText =
+      "Merci d'indiquer le nombre de réservation souhaité";
+  }
+}
+
+let nombreCasquesEnfants = document.querySelector("#nombreCasquesEnfants");
+let NombreLugesEte = document.querySelector("#NombreLugesEte");
+
+function suivant2(blocACacher, blocAAfficher) {
+  if (nombreCasquesEnfants.value < 0) {
+    // Message erreur casque
+    document.querySelector(".messageErreurCasques").innerText =
+      "Merci d'indiquer le nombre de casque souhaité";
+  } else if (NombreLugesEte.value < 0) {
+    // Message erreur luge
+    document.querySelector(".messageErreurLuge").innerText =
+      "Merci d'indiquer le nombre de descente souhaité";
+  } else {
+    blocACacher.classList.add("hidden");
+    blocAAfficher.classList.remove("hidden");
+  }
 }
 
 // fin code Salome
@@ -21,7 +83,6 @@ function suivant(blocACacher, blocAAfficher) {
 let tarifreduit = document.querySelector("#tarifreduitRadio");
 let pass1Jour = document.querySelector("#pass1jour");
 let pass2Jour = document.querySelector("#pass2jours");
-let pass3Jour = document.querySelector("#pass3jours");
 let displayPass1Jour = document.querySelector("#pass1jourDate");
 let displayPass2Jour = document.querySelector("#pass2joursDate");
 let displayTarifReduit = document.querySelector("#tarifreduit");
@@ -68,12 +129,6 @@ pass3Jour.addEventListener("click", function () {
 let pass1jour = document.querySelector("#pass1jour");
 let pass2jours = document.querySelector("#pass2jours");
 let pass3jours = document.querySelector("#pass3jours");
-
-let choixJour1 = document.querySelector("#choixJour1");
-let choixJour2 = document.querySelector("#choixJour2");
-let choixJour3 = document.querySelector("#choixJour3");
-let choixJour12 = document.querySelector("#choixJour12");
-let choixJour23 = document.querySelector("#choixJour23");
 
 pass1jour.addEventListener("change", () => {
   decocher(pass1jour, pass2jours);

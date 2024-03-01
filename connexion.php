@@ -2,6 +2,9 @@
 session_start();
 
 if (isset($_SESSION['connecté'])) {
+    header('location:pageUser.php');
+    die;
+} else if (isset($_SESSION['connectéAdmin'])) {
     header('location:pageAdmin.php');
     die;
 }

@@ -28,9 +28,6 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     $adresse = htmlspecialchars($_POST['adressePostale']);
 
 
-    $user = new User($nom, $prenom, $mail, $tel, $adresse);
-
-    $retourUser = $databaseUser->saveUtilisateur($user);
 
 
     if ($_POST["password"] == $_POST["passwordBis"]) {
@@ -43,6 +40,9 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
 
+    $user = new User($nom, $prenom, $mail, $tel, $adresse);
+
+    $retourUser = $databaseUser->saveUtilisateur($user);
 
 
     if (isset($_POST['choixJour1'])) {

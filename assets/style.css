@@ -115,7 +115,10 @@ input[type="checkbox"] {
   display: none !important;
 }
 
-.messageErreurChampsVides {
+.messageErreurChampsVides,
+.messageErreurReservation,
+.messageErreurCasques,
+.messageErreurLuge {
   color: red;
 }
 

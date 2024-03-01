@@ -157,7 +157,11 @@
         <div id="coordonnees" class="blocFormulaire">
 
             <h2>Coordonnées</h2>
-            <div class="messageErreurChampsVides"></div>
+            <div class="messageErreurChampsVides"><?php if (!empty($_GET['erreur'])) {
+                                                        if ($_GET['erreur'] == 4 || $_GET['erreur'] == 2 || $_GET['erreur'] == 1 || $_GET['erreur'] == 3 || $_GET['erreur'] == 5 || $_GET['erreur'] == 6 || $_GET['erreur'] == 7 || $_GET['erreur'] == 8) {
+                                                            echo ("Formulaire incorrect");
+                                                        }
+                                                    }; ?></div>
 
             <label for="nom">Nom :</label>
             <input type="text" name="nom" id="nom" placeholder="Dupont">
@@ -169,6 +173,10 @@
             <input type=" text" name="telephone" id="telephone" placeholder="0612345678">
             <label for="adressePostale">Adresse Postale :</label>
             <input type="text" name="adressePostale" id="adressePostale" placeholder="4 rue Victor Hugo 38000 Grenoble">
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password" placeholder="Entrer un mot de passe avec 6 caractères minimum">
+            <label for="passwordBis">Confirmer votre mot de passe :</label>
+            <input type="password" name="passwordBis" id="passwordBis" placeholder="Entrer un mot de passe avec 6 caractères minimum">
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
 

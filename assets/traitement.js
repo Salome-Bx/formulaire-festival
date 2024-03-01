@@ -5,6 +5,8 @@ let champsPrenom = document.querySelector("#prenom");
 let champsEmail = document.querySelector("#email");
 let champsTelehone = document.querySelector("#telephone");
 let champsAdresse = document.querySelector("#adressePostale");
+let champsMdp = document.querySelector("#password");
+let champsMdpBis = document.querySelector("#passwordBis");
 
 let formulaire = document.querySelector("#inscription");
 
@@ -21,22 +23,45 @@ let formulaire = document.querySelector("#inscription");
  *
  */
 formulaire.addEventListener("submit", function (evenement) {
-
-
-    if (champsNom.value == "" || champsPrenom.value == "" || champsEmail.value == "" || champsTelehone.value == "" || champsAdresse.value == "") {
-
-        evenement.preventDefault();
-        document.querySelector('.messageErreurChampsVides').innerText = `Merci de remplir tous les champs.`;
-    }
-    else if (isNaN(champsTelehone.value)) {
-
-        evenement.preventDefault();
-        document.querySelector('.messageErreurChampsVides').innerText = `Merci de mettre un numéro de téléphone valide.`;
-    }
-    if (checkEmail(champsEmail.value) == false) {
-        document.querySelector('.messageErreurChampsVides').innerText = `Merci de mettre un email valide.`;
-        evenement.preventDefault();
-    }
+  if (
+    champsNom.value == "" ||
+    champsPrenom.value == "" ||
+    champsEmail.value == "" ||
+    champsTelehone.value == "" ||
+    champsAdresse.value == "" ||
+    champsMdp.value == "" ||
+    champsMdpBis.value == ""
+  ) {
+    evenement.preventDefault();
+    document.querySelector(
+      ".messageErreurChampsVides"
+    ).innerText = `Merci de remplir tous les champs.`;
+  } else if (isNaN(champsTelehone.value)) {
+    evenement.preventDefault();
+    document.querySelector(
+      ".messageErreurChampsVides"
+    ).innerText = `Merci de mettre un numéro de téléphone valide.`;
+  }
+  if (checkEmail(champsEmail.value) == false) {
+    document.querySelector(
+      ".messageErreurChampsVides"
+    ).innerText = `Merci de mettre un email valide.`;
+    evenement.preventDefault();
+  }
+  let longeurMdp = champsMdp.value;
+  let longeurMdpBis = champsMdpBis.value;
+  if (longeurMdp.length < 6 || longeurMdpBis.length < 6) {
+    document.querySelector(
+      ".messageErreurChampsVides"
+    ).innerText = `Merci d'entrer au moins six caractères.`;
+    console.log(longeurMdp, longeurMdpBis);
+    evenement.preventDefault();
+  } else if (longeurMdp !== longeurMdpBis) {
+    document.querySelector(
+      ".messageErreurChampsVides"
+    ).innerText = `Vos mots de passe sont différents.`;
+    evenement.preventDefault();
+  }
 });
 
 /**

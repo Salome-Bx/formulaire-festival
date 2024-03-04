@@ -154,6 +154,7 @@
             </div>
 
             <p class="bouton boutonOptions" onclick="suivant2(blocOptions, blocCoordonnees)">Suivant</p>
+            <p class="bouton boutonReservation" onclick="precedent(blocOptions, blocReservation)">Précédent</p>
 
         </div>
 
@@ -182,6 +183,7 @@
             <input type="password" name="passwordBis" id="passwordBis" placeholder="Entrer un mot de passe avec 6 caractères minimum">
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
+            <p class="bouton boutonReservation" onclick="precedent(blocCoordonnees, blocOptions)">Précédent</p>
 
         </div>
     </form>

@@ -34,8 +34,7 @@
             <li><?= $nom ?></li>
             <li><?= $prenom ?></li>
 
-            <!-- Alternative pour ne pas avoir les puces -->
-            <!-- <p><b> <?=// $prenom ?> <?= //$nom ?></b></p> -->
+
 
             <li><?= "Vous avez pris " . $nbrReservation . " réservations." ?></li>
             <li> <?php if ($typeRerservation == '1Journee0107') {

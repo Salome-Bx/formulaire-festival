@@ -36,7 +36,7 @@ class Reservation
     }
 
 
-    ////////////Function copier-coller////////////
+  
     public function getId(): int
     {
         return $this->_id;
@@ -51,7 +51,7 @@ class Reservation
     }
 
 
-    ////////////Nos fonctions////////////
+   
     public function getNbrReservation(): int
     {
         return $this->_nbrReservation;
@@ -78,9 +78,6 @@ class Reservation
     public function setPrixTotalReservation(string $typeRerservation): int
     {
         if ($typeRerservation === '1Journee0107' || $typeRerservation === '1Journee0207' || $typeRerservation === '1Journee0307') {
-
-            //Là il faut compléter pour que suivant le type de reservation ça nous renvoit un prix (ici j'ai mis 40 pour l'exemple)
-
             $prix = 40;
         } else if ($typeRerservation === '2Journees01070207' || $typeRerservation === '2Journees02070307') {
             $prix = 70;
@@ -187,14 +184,14 @@ class Reservation
 
         $reservations = $Database->getAllReservations();
 
-        // On crée un tableau dans lequel on stockera tous les ids existants.
+        
         $IDs = [];
 
         foreach ($reservations as $reservation) {
             $IDs[] = $reservation->getId();
         }
 
-        // Ensuite, on regarde si un chiffre existe dans le tableau, et si non, on l'incrémente
+        
         $i = 1;
         $unique = false;
         while ($unique === false) {
@@ -207,7 +204,7 @@ class Reservation
         return $i;
     }
 
-    ////////////Nos fonctions////////////
+    
     public function calculerPrix(): int
     {
         $prixTotal = $this->getPrixTotalReservation() + $this->getPrixTotalNuit() + $this->getPrixTotalCasqueEnfant() + $this->getPrixTotalCasqueEnfant() + $this->getPrixDescenteLuge();

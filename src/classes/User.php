@@ -105,14 +105,14 @@ class User
 
     $utilisateurs = $Database->getAllUtilisateurs();
 
-    // On crée un tableau dans lequel on stockera tous les ids existants.
+    
     $IDs = [];
 
     foreach ($utilisateurs as $utilisateur) {
       $IDs[] = $utilisateur->getId();
     }
 
-    // Ensuite, on regarde si un chiffre existe dans le tableau, et si non, on l'incrémente
+    
     $i = 1;
     $unique = false;
     while ($unique === false) {

@@ -1,9 +1,8 @@
 # formulaire-festival
 
-- conditions d'installation
-- présentation du site
-- décrire les différentes parties du code, à quoi sert le site etc..
-- Temps pour faire le site pour Simplon
+Lien du site : https://simplondevgrenoble.nohost.me/salome/brief-festival/
+
+code admin : admin@admin.com      mpd : Jesuisadmin 
 
 
 Ce projet est un formulaire de réservation pour le Vercors Musique Festival. Il a pour objectif de nous faire mettre en application les connaissances acquises en PHP mais aussi en JS, HTML et CSS.
@@ -16,3 +15,4 @@ Dans ce code il y a :
 - une partie "assets" contenant les fichiers CSS et JS ainsi que les medias
 - une partie "src" contenant les classes, les csv récupérants les informations du formulaire, le fichier config contenant les erreurs, le fichier authentification qui vérifie les identifiants de connexion ainsi que le fichier traitement qui récupère les champs et leur applique les classes.
 - une partie includes qui contient la page PopUp qui affiche le récapitulatif de ce que l'utilisateur a reservé.
+

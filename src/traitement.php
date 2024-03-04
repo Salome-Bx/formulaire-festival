@@ -40,7 +40,7 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
 
-    $user = new User($nom, $prenom, $mail, $tel, $adresse);
+    $user = new User($nom, $prenom, $mail, $tel, $adresse, $mdp);
 
     $retourUser = $databaseUser->saveUtilisateur($user);
 

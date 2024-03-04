@@ -3,8 +3,8 @@
 class Database
 {
 
-    private $_DBU;
-    private $_DBR;
+    private $_DBU; //Base de données utilisateur
+    private $_DBR; //Basse de données réseevation
 
 
     /**
@@ -87,7 +87,7 @@ class Database
      *
      * @param   User  $user  classe User
      *
-     * @return  bool         [return description]
+     * @return  bool         retourne true ou false
      */
     public function saveUtilisateur(User $user): bool
     {
@@ -106,9 +106,9 @@ class Database
     /********** DataBaseReservation **********/
 
     /**
-     * [getAllReservations description]
+     * Fonction qui récupère toutes les réservations du csv 
      *
-     * @return  array   [return description]
+     * @return  array   retourne un tableau avec toutes les réservations, 1 par ligne
      */
     public function getAllReservations(): array
     {
@@ -124,7 +124,13 @@ class Database
         return $reservations;
     }
 
-
+    /**
+     * Fonction qui permet de récupérer les réservations par leur ID
+     *
+     * @param   int   $id  La paramètre doit être un nombre
+     *
+     * @return  User       retourne les infos réservation s'il y a un ID en nombre, sinon $user = false
+     */
     public function getThisReservationById(int $id): Reservation|bool
     {
         $connexion = fopen($this->_DBR, 'r');
@@ -141,11 +147,11 @@ class Database
     }
 
     /**
-     * Function qui fait appel à la méthode getObjectToArray() pour créer un csv avec les infos utilisateur
+     * Function qui fait appel à la méthode getObjectToArray() pour créer un csv avec les infos de réservations
      *
      * @param   Reservation  $reservation  classe Reservation
      *
-     * @return  bool                       [return description]
+     * @return  bool         retourne true ou false
      */
     public function saveReservation(Reservation $reservation): bool
     {
@@ -168,4 +174,3 @@ class Database
 
 ?>
 
-<!-- new Database -->

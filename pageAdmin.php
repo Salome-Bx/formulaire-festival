@@ -41,13 +41,13 @@ require_once "src/classes/Database.php";
 
     <section>
         <?php
-
+        // instanciation de la classe Database
         $DBR = new Database('Reservation');
         $reservations = $DBR->getAllReservations();
 
         foreach ($reservations as $reservation) {
             $IdUser = $reservation->getIdUser();
-
+            // instanciation de la classe User
             $DBU = new Database('User');
             $utilisateur = $DBU->getThisUtilisateurById($IdUser); ?>
 

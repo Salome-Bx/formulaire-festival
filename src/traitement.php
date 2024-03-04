@@ -2,16 +2,17 @@
 
 // importer ici les classes nécéssaires
 require_once "./classes/User.php";
-
 require_once "./classes/Database.php";
 require_once "./classes/Reservation.php";
 
 require_once "./config.php";
 
 
+// vérification champs formulaire et récupération des données
 
 if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['email']) && isset($_POST['telephone']) && isset($_POST['adressePostale']) && isset($_POST['password']) && isset($_POST['passwordBis'])  && !empty($_POST['nombrePlaces']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['adressePostale']) && !empty($_POST['password']) && !empty($_POST['passwordBis'])) {
 
+     // deux instanciations de la classe Database : user et reservation
     $databaseUser = new Database("User");
     $databaseReservation = new Database("Reservation");
 
@@ -28,8 +29,6 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
     $adresse = htmlspecialchars($_POST['adressePostale']);
 
 
-
-
     if ($_POST["password"] == $_POST["passwordBis"]) {
         $mdp = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $mdpBis = password_hash($_POST["passwordBis"], PASSWORD_DEFAULT);
@@ -39,7 +38,7 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
 
-
+    // instanciation de la classe User
     $user = new User($nom, $prenom, $mail, $tel, $adresse);
 
     $retourUser = $databaseUser->saveUtilisateur($user);
@@ -113,10 +112,10 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         $nbrDescenteLuge = 0;
     };
 
-
+    // création de la variable $iderUser qui récupère l'id des utilisateurs pour la stocker dans le csv des réservations
     $idUser = $user->getId();
 
-
+    // instanciation de la classe Réservation
     $reservation = new Reservation($nbrReservation, $typeRerservation, $nuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $idUser);
     $retourReservation = $databaseReservation->saveReservation($reservation);
 
@@ -130,7 +129,6 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
         die;
     }
 } else {
-
 
     header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
 }

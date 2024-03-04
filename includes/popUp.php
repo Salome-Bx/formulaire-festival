@@ -31,8 +31,7 @@
     <div class="blocFormulaire">
         <ul>
             <!-- $typeRerservation, $nuit, $nbrEnfant, $nbrCasqueEnfant, $nbrDescenteLuge, $idUser -->
-            <li><?= $nom ?></li>
-            <li><?= $prenom ?></li>
+            <p><?= $nom ?> <?= $prenom ?></p>
 
 
 

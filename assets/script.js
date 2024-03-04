@@ -58,6 +58,7 @@ function suivant(blocACacher, blocAAfficher) {
   }
 }
 
+
 let nombreCasquesEnfants = document.querySelector("#nombreCasquesEnfants");
 let NombreLugesEte = document.querySelector("#NombreLugesEte");
 
@@ -86,7 +87,6 @@ let pass2Jour = document.querySelector("#pass2jours");
 let displayPass1Jour = document.querySelector("#pass1jourDate");
 let displayPass2Jour = document.querySelector("#pass2joursDate");
 let displayTarifReduit = document.querySelector("#tarifreduit");
-
 let divPass1Jour = document.querySelector(".divPass1Jour");
 let divPass2Jours = document.querySelector(".divPass2Jours");
 let divPass3Jours = document.querySelector(".divPass3Jours");
@@ -121,6 +121,13 @@ pass3Jour.addEventListener("click", function () {
   displayPass2Jour.classList.add("tarifHidden");
 });
 
+// faire la docstring de la fonction
+
+function precedent(blocACacher, blocAAfficher) {
+
+  blocACacher.classList.add("hidden");
+  blocAAfficher.classList.remove("hidden");
+}
 // fin code Aubin
 
 // début code Elodie

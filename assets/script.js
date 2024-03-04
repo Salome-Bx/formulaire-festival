@@ -9,7 +9,6 @@ blocOptions.classList.add("hidden");
 let blocCoordonnees = document.querySelector("#coordonnees");
 blocCoordonnees.classList.add("hidden");
 
-let boutonReservation = document.querySelector(".boutonReservation");
 let NombrePlaces = document.querySelector("#NombrePlaces");
 
 let choixJour1 = document.querySelector("#choixJour1");

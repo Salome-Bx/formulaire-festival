@@ -84,7 +84,7 @@
 
             <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
-            <p class="bouton boutonReservation" onclick="suivant(blocReservation, blocOptions)">Suivant</p>
+            <p class="bouton" onclick="suivant(blocReservation, blocOptions)">Suivant</p>
             <div class="messageErreurReservation"></div>
 
         </div>
@@ -154,7 +154,7 @@
             </div>
 
             <p class="bouton boutonOptions" onclick="suivant2(blocOptions, blocCoordonnees)">Suivant</p>
-            <p class="bouton boutonReservation" onclick="precedent(blocOptions, blocReservation)">Précédent</p>
+            <p class="bouton" onclick="precedent(blocOptions, blocReservation)">Précédent</p>
 
         </div>
 
@@ -183,7 +183,7 @@
             <input type="password" name="passwordBis" id="passwordBis" placeholder="Entrer un mot de passe avec 6 caractères minimum">
 
             <input type="submit" name="soumission" class="bouton" value="Réserver">
-            <p class="bouton boutonReservation" onclick="precedent(blocCoordonnees, blocOptions)">Précédent</p>
+            <p class="bouton" onclick="precedent(blocCoordonnees, blocOptions)">Précédent</p>
 
         </div>
     </form>

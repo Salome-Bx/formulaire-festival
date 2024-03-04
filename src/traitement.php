@@ -38,8 +38,8 @@ if (isset($_POST['nombrePlaces']) && isset($_POST['nom']) && isset($_POST['preno
 
 
 
-    // instanciation de la classe User
-    $user = new User($nom, $prenom, $mail, $tel, $adresse);
+
+    $user = new User($nom, $prenom, $mail, $tel, $adresse, $mdp);
 
     $retourUser = $databaseUser->saveUtilisateur($user);
 

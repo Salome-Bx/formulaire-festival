@@ -42,7 +42,7 @@ require_once "src/classes/Database.php";
     <section>
         <?php
         $DBU = new Database('User');
-        $User =  $DBU->getThisUtilisateurByEmail($_POST['emailConnexion']);
+        $User =  $DBU->getThisUtilisateurByEmail($_SESSION['mailSession']);
 
         $IdUser = $User->getId();
 

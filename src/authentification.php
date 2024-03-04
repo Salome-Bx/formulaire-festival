@@ -21,29 +21,30 @@ if (isset($_POST['emailConnexion']) && isset($_POST['motDePasseConnexion']) && !
                 $_SESSION['connectéUser'] = TRUE;
                 //Renvoie à la page Admin quand tout est bon
                 header('location:../pageAdmin.php');
+                die;
             } else {
+                
                 header('location:../connexion.php?erreur=' . ERREUR_CONNEXION);
             }
         }
-
-    
-        else if ($userMailConnexion) {
-            $userMailConnexion = $Database->getThisUtilisateurByEmail($mail);
+        $userMailConnexion = $Database->getThisUtilisateurByEmail($mail);
+        if ($userMailConnexion) {
+           
 
             if ($userMailConnexion !==  $mailAdmin) {
                 if (password_verify($_POST['motDePasseConnexion'], $userMailConnexion->getPassword())) {
                     $_SESSION['connecté'] = TRUE;
                     header('location:../pageUser.php');
                 }
+            } else {
+               
+                header('location:../connexion.php?erreur=' . ERREUR_CONNEXION);
             }
-
-        else {
-            header('location:../connexion.php?erreur=' . ERREUR_CONNEXION);
+        } else {
+           header('location:../connexion.php?erreur=' . ERREUR_CONNEXION);
         }
     } else {
-        header('location:../connexion.php?erreur=' . ERREUR_CONNEXION);
+       
+        header('location:../connexion.php?erreur=' . ERREUR_CHAMP_VIDE);
     }
-} else {
-    header('location:../connexion.php?erreur=' . ERREUR_CHAMP_VIDE);
-}
 }
